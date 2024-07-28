@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "🪴 Dan's garden",
+    pageTitle: "🌻 Dan's garden",
     enableSPA: true,
     enablePopovers: true,
     analytics: null,
@@ -20,32 +20,47 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        header: "Merriweather",
+        body: "Open Sans",
+        code: "Fira Code",
       },
+
+      // Using the Rosé Pine color palette (light = dawn, dark = moon):
+      // https://rosepinetheme.com/palette
+      //
+      // - `light`: Background (Rosé Pine "Surface").
+      // - `lightgray`: Borders (Rosé Pine "Highlight Med").
+      // - `gray`: Graph links, page metadata (Rosé Pine "Muted").
+      // - `darkgray`: Text (Rosé Pine "Text").
+      // - `dark`: Headers (Rosé Pine "Pine").
+      // - `secondary`: Title, links, current graph node (Rosé Pine "Love").
+      // - `tertiary`: Hover and visited graph nodes (Rosé Pine "Gold").
+      // - `highlight`: Wiki links background, (search) highlighted text
+      //   (Rosé Pine "Overlay").
+      // - `textHighlight`: Markdown highlighted text background (Rosé Pine
+      //   "Iris").
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "#fffaf3",
+          lightgray: "#dfdad9",
+          gray: "#9893a5",
+          darkgray: "#575279",
+          dark: "#286983",
+          secondary: "#b4637a",
+          tertiary: "#ea9d34",
+          highlight: "#f2e9e1",
+          textHighlight: "#907aa9",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#2a273f",
+          lightgray: "#44415a",
+          gray: "#6e6a86",
+          darkgray: "#e0def4",
+          dark: "#3e8fb0",
+          secondary: "#eb6f92",
+          tertiary: "#f6c177",
+          highlight: "#393552",
+          textHighlight: "#c4a7e7",
         },
       },
     },
@@ -61,7 +76,7 @@ const config: QuartzConfig = {
           light: "rose-pine-dawn",
           dark: "rose-pine-moon",
         },
-        keepBackground: false,
+        keepBackground: true,
       }),
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
       Plugin.GitHubFlavoredMarkdown(),

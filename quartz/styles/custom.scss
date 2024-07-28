@@ -1,3 +1,98 @@
+@use "./variables.scss" as *;
 @use "./base.scss";
 
-// put your custom CSS here!
+#quartz-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  & > #quartz-body {
+    flex: auto;
+
+    & .sidebar {
+      flex-direction: column;
+
+      @media (min-width: 640px) {
+        flex-direction: row;
+      }
+
+      @media (min-width: $fullPageWidth) {
+        flex-direction: column;
+      }
+    }
+
+    & .sidebar.left {
+      @media (max-width: 640px) {
+        gap: 1.5rem;
+        align-items: flex-start;
+      }
+    }
+  }
+}
+
+.spacer {
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.darkmode {
+  margin: 0 0 0 1.5rem;
+
+  @media (max-width: 640px) {
+    margin: 0;
+  }
+
+  @media (min-width: $fullPageWidth) {
+    margin: 0;
+  }
+}
+
+.search {
+  & > #search-container {
+    & > #search-space {
+      & > #search-layout {
+        .highlight {
+          background: color-mix(in srgb, var(--tertiary) 25%, rgba(255, 255, 255, 0));
+        }
+      }
+    }
+  }
+}
+
+hr {
+  overflow: visible;
+  padding: 0;
+  height: 0;
+  margin: 4rem auto;
+  border: none;
+  text-align: center;
+  width: 100%;
+
+  &:after {
+    content: "* * *";
+    display: inline-block;
+    margin: -1em 0 0.5em;
+    font-size: 1.5em;
+    padding: 0.5em 1em;
+    color: var(--gray);
+  }
+}
+
+#quartz-footer {
+  text-align: center;
+  margin-bottom: 0;
+  margin: 2rem auto;
+  opacity: 1;
+
+  & > p {
+    color: var(--gray);
+  }
+}
+
+::selection {
+  background: color-mix(in srgb, var(--tertiary) 50%, rgba(255, 255, 255, 0));
+  color: var(--darkgray);
+}

@@ -30,10 +30,10 @@ export default {
       darkMode: "Dark mode",
     },
     explorer: {
-      title: "Explorer",
+      title: "Index",
     },
     footer: {
-      createdWith: "Created with",
+      createdWith: "Built with",
     },
     graph: {
       title: "Graph View",
@@ -47,8 +47,8 @@ export default {
       linkToOriginal: "Link to original",
     },
     search: {
-      title: "Search",
-      searchBarPlaceholder: "Search for something",
+      title: "Search..",
+      searchBarPlaceholder: "Search Dan's garden..",
     },
     tableOfContents: {
       title: "Table of Contents",
@@ -59,7 +59,7 @@ export default {
   },
   pages: {
     rss: {
-      recentNotes: "Recent notes",
+      recentNotes: "Recent Notes",
       lastFewNotes: ({ count }) => `Last ${count} notes`,
     },
     error: {
