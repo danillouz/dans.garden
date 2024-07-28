@@ -1,8 +1,8 @@
+import { Repository } from "@napi-rs/simple-git"
+import chalk from "chalk"
 import fs from "fs"
 import path from "path"
-import { Repository } from "@napi-rs/simple-git"
 import { QuartzTransformerPlugin } from "../types"
-import chalk from "chalk"
 
 export interface Options {
   priority: ("frontmatter" | "git" | "filesystem")[]
@@ -12,7 +12,7 @@ const defaultOptions: Options = {
   priority: ["frontmatter", "git", "filesystem"],
 }
 
-function coerceDate(fp: string, d: any): Date {
+function coerceDate(fp: string, d: any, coerce: boolean): Date | undefined {
   const dt = new Date(d)
   const invalidDate = isNaN(dt.getTime()) || dt.getTime() === 0
   if (invalidDate && d !== undefined) {
@@ -23,7 +23,11 @@ function coerceDate(fp: string, d: any): Date {
     )
   }
 
-  return invalidDate ? new Date() : dt
+  if (invalidDate) {
+    return coerce ? new Date() : undefined
+  } else {
+    return dt
+  }
 }
 
 type MaybeDate = undefined | string | number
@@ -77,9 +81,12 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options> | und
             }
 
             file.data.dates = {
-              created: coerceDate(fp, created),
-              modified: coerceDate(fp, modified),
-              published: coerceDate(fp, published),
+              // Only "coerce" the `created` date.
+              // This makes sure `modified` and `published` don't
+              // default to "now" when not set (e.g. in frontmatter).
+              created: coerceDate(fp, created, true),
+              modified: coerceDate(fp, modified, false),
+              published: coerceDate(fp, published, false),
             }
           }
         },
@@ -91,9 +98,9 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options> | und
 declare module "vfile" {
   interface DataMap {
     dates: {
-      created: Date
-      modified: Date
-      published: Date
+      created?: Date
+      modified?: Date
+      published?: Date
     }
   }
 }

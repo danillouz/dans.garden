@@ -54,7 +54,9 @@ export default {
       title: "Table of Contents",
     },
     contentMeta: {
+      createdAt: "Planted",
       readingTime: ({ minutes }) => `${minutes} min read`,
+      updatedAt: "Last tended",
     },
   },
   pages: {

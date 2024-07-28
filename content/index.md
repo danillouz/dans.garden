@@ -1,6 +1,7 @@
 ---
-title: Welcome to Quartz
+title: Home
+description: Welcome to my digital garden.
+date: 2024-07-28
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+Hi there, I'm Dan. Welcome to my digital garden.

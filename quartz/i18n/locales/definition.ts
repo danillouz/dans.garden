@@ -56,7 +56,9 @@ export interface Translation {
       title: string
     }
     contentMeta: {
+      createdAt: string
       readingTime: (variables: { minutes: number }) => string
+      updatedAt: string
     }
   }
   pages: {
