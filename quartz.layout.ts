@@ -28,6 +28,12 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Search(),
     Component.Darkmode(),
     Component.DesktopOnly(
+      Component.RecentNotes({
+        limit: 3,
+        showTags: false,
+      }),
+    ),
+    Component.DesktopOnly(
       Component.Explorer({
         folderClickBehavior: "link",
         folderDefaultState: "open",
@@ -41,7 +47,7 @@ export const defaultContentPageLayout: PageLayout = {
   ],
 }
 
-// components for pages that display lists of pages  (e.g. tags or folders)
+// components for pages that display lists of pages (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [
     Component.Breadcrumbs({
@@ -56,6 +62,12 @@ export const defaultListPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
+    Component.DesktopOnly(
+      Component.RecentNotes({
+        limit: 3,
+        showTags: false,
+      }),
+    ),
     Component.DesktopOnly(
       Component.Explorer({
         folderClickBehavior: "link",

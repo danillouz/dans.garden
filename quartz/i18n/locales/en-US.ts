@@ -23,7 +23,7 @@ export default {
     },
     backlinks: {
       title: "Backlinks",
-      noBacklinksFound: "No backlinks found",
+      noBacklinksFound: "No backlinks.",
     },
     themeToggle: {
       lightMode: "Light mode",
@@ -39,7 +39,7 @@ export default {
       title: "Graph View",
     },
     recentNotes: {
-      title: "Recent Notes",
+      title: "Recent",
       seeRemainingMore: ({ remaining }) => `See ${remaining} more →`,
     },
     transcludes: {
