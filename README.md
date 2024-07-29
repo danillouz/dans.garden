@@ -12,6 +12,12 @@ npx quartz build --serve
 
 <https://quartz.jzhao.xyz/build>
 
+Or just run:
+
+```sh
+npm start
+```
+
 ## Upgrading Quartz
 
 ```sh
