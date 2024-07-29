@@ -33,7 +33,7 @@ const config: QuartzConfig = {
       // - `gray`: Graph links, page metadata (Rosé Pine "Muted").
       // - `darkgray`: Text (Rosé Pine "Text").
       // - `dark`: Headers (Rosé Pine "Pine").
-      // - `secondary`: Title, links, current graph node (Rosé Pine "Love").
+      // - `secondary`: Title, links, current graph node (Rosé Pine "Rose").
       // - `tertiary`: Hover and visited graph nodes (Rosé Pine "Gold").
       // - `highlight`: Wiki links background, (search) highlighted text
       //   (Rosé Pine "Overlay").
@@ -46,7 +46,7 @@ const config: QuartzConfig = {
           gray: "#9893a5",
           darkgray: "#575279",
           dark: "#286983",
-          secondary: "#b4637a",
+          secondary: "#d7827e",
           tertiary: "#ea9d34",
           highlight: "#f2e9e1",
           textHighlight: "#907aa9",
@@ -57,7 +57,7 @@ const config: QuartzConfig = {
           gray: "#6e6a86",
           darkgray: "#e0def4",
           dark: "#3e8fb0",
-          secondary: "#eb6f92",
+          secondary: "#ea9a97",
           tertiary: "#f6c177",
           highlight: "#393552",
           textHighlight: "#c4a7e7",
