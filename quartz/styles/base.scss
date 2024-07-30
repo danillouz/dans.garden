@@ -22,7 +22,7 @@ section {
 .text-highlight {
   background-color: var(--textHighlight);
   padding: 0 0.1rem;
-  border-radius: 5px;
+  border-radius: var(--borderRadius);
 }
 ::selection {
   background: color-mix(in srgb, var(--tertiary) 60%, rgba(255, 255, 255, 0));
@@ -82,7 +82,7 @@ a {
     text-decoration: none;
     background-color: var(--highlight);
     padding: 0 0.1rem;
-    border-radius: 5px;
+    border-radius: var(--borderRadius);
     line-height: 1.4rem;
 
     &:has(> img) {
@@ -240,7 +240,7 @@ input[type="checkbox"] {
   transform: translateY(2px);
   color: var(--secondary);
   border: 1px solid var(--lightgray);
-  border-radius: 3px;
+  border-radius: var(--borderRadius);
   background-color: var(--light);
   position: relative;
   margin-inline-end: 0.2rem;
@@ -352,7 +352,7 @@ figure[data-rehype-pretty-code-figure] {
     padding: 0.1rem 0.5rem;
     border: 1px solid var(--lightgray);
     width: max-content;
-    border-radius: 5px;
+    border-radius: var(--borderRadius);
     margin-bottom: -0.5rem;
     color: var(--darkgray);
   }
@@ -365,7 +365,7 @@ figure[data-rehype-pretty-code-figure] {
 pre {
   font-family: var(--codeFont);
   padding: 0 0.5rem;
-  border-radius: 5px;
+  border-radius: var(--borderRadius);
   overflow-x: auto;
   border: 1px solid var(--lightgray);
   position: relative;
@@ -386,7 +386,7 @@ pre {
 
     & [data-highlighted-chars] {
       background-color: var(--highlight);
-      border-radius: 5px;
+      border-radius: var(--borderRadius);
     }
 
     & > [data-line] {
@@ -424,7 +424,7 @@ code {
   font-size: 0.9em;
   color: var(--dark);
   font-family: var(--codeFont);
-  border-radius: 5px;
+  border-radius: var(--borderRadius);
   padding: 0.1rem 0.2rem;
   background: var(--lightgray);
 }
@@ -473,7 +473,7 @@ tr {
 
 img {
   max-width: 100%;
-  border-radius: 5px;
+  border-radius: var(--borderRadius);
   margin: 1rem 0;
 }
 
@@ -493,7 +493,7 @@ hr {
 audio,
 video {
   width: 100%;
-  border-radius: 5px;
+  border-radius: var(--borderRadius);
 }
 
 .spacer {

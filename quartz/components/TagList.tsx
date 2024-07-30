@@ -1,6 +1,6 @@
+import { classNames } from "../util/lang"
 import { pathToRoot, slugTag } from "../util/path"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { classNames } from "../util/lang"
 
 const TagList: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
   const tags = fileData.frontmatter?.tags
@@ -39,7 +39,7 @@ TagList.css = `
 .section-li > .section > .tags {
   justify-content: flex-end;
 }
-  
+
 .tags > li {
   display: inline-block;
   white-space: nowrap;
@@ -48,7 +48,7 @@ TagList.css = `
 }
 
 a.internal.tag-link {
-  border-radius: 8px;
+  border-radius: var(--borderRadius);
   background-color: var(--highlight);
   padding: 0.2rem 0.4rem;
   margin: 0 0.1rem;

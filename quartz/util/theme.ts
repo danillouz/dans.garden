@@ -16,6 +16,7 @@ interface Colors {
 }
 
 export interface Theme {
+  borderRadius: string
   typography: {
     header: string
     body: string
@@ -55,6 +56,7 @@ ${stylesheet.join("\n\n")}
   --headerFont: "${theme.typography.header}", ${DEFAULT_SANS_SERIF};
   --bodyFont: "${theme.typography.body}", ${DEFAULT_SANS_SERIF};
   --codeFont: "${theme.typography.code}", ${DEFAULT_MONO};
+  --borderRadius: ${theme.borderRadius};
 }
 
 :root[saved-theme="dark"] {

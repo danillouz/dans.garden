@@ -7,7 +7,7 @@
 
   & > #search-icon {
     background-color: var(--lightgray);
-    border-radius: 4px;
+    border-radius: var(--borderRadius);
     height: 2rem;
     display: flex;
     align-items: center;
@@ -65,7 +65,7 @@
 
       & > * {
         width: 100%;
-        border-radius: 7px;
+        border-radius: var(--borderRadius);
         background: var(--light);
         box-shadow:
           0 14px 50px rgba(27, 33, 48, 0.12),
@@ -124,7 +124,7 @@
 
         & > div {
           height: calc(75vh - 12vh);
-          border-radius: 5px;
+          border-radius: var(--borderRadius);
         }
 
         @media all and (max-width: $tabletBreakpoint) {
@@ -141,7 +141,7 @@
 
         & .highlight {
           background: color-mix(in srgb, var(--tertiary) 60%, rgba(255, 255, 255, 0));
-          border-radius: 5px;
+          border-radius: var(--borderRadius);
           scroll-margin-top: 2rem;
         }
 
@@ -204,7 +204,7 @@
             }
 
             & > ul > li > p {
-              border-radius: 8px;
+              border-radius: var(--borderRadius);
               background-color: var(--highlight);
               padding: 0.2rem 0.4rem;
               margin: 0 0.1rem;
