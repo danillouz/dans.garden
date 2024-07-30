@@ -39,6 +39,7 @@ export const defaultContentPageLayout: PageLayout = {
         folderDefaultState: "open",
       }),
     ),
+    Component.DesktopOnly(Component.Attribution()),
   ],
   right: [
     Component.DesktopOnly(Component.TableOfContents()),
@@ -74,6 +75,7 @@ export const defaultListPageLayout: PageLayout = {
         folderDefaultState: "open",
       }),
     ),
+    Component.DesktopOnly(Component.Attribution()),
   ],
   right: [Component.Backlinks(), Component.Graph()],
 }

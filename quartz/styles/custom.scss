@@ -81,10 +81,26 @@ hr {
 
 #quartz-footer {
   text-align: center;
-  margin-bottom: 0;
   margin: 2rem auto;
   opacity: 1;
 
+  @media (min-width: $fullPageWidth) {
+    margin: 0 auto;
+  }
+
+  & > p {
+    color: var(--gray);
+  }
+
+  & > ul {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+#quartz-attribution {
   & > p {
     color: var(--gray);
   }

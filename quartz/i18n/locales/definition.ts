@@ -34,7 +34,7 @@ export interface Translation {
     explorer: {
       title: string
     }
-    footer: {
+    attribution: {
       createdWith: string
     }
     graph: {

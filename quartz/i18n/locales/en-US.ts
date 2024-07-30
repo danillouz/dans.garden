@@ -32,7 +32,7 @@ export default {
     explorer: {
       title: "Index",
     },
-    footer: {
+    attribution: {
       createdWith: "Built with",
     },
     graph: {
