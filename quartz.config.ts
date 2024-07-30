@@ -100,7 +100,12 @@ const config: QuartzConfig = {
       Plugin.ContentIndex({
         enableSiteMap: true,
         enableRSS: true,
-        rssFullHtml: true,
+        rssLimit: 10,
+        includeEmptyFiles: false,
+
+        // Some icons render very large making it unreadable.
+        // So for now don't show the full text.
+        rssFullHtml: false,
       }),
       Plugin.Assets(),
       Plugin.Static(),

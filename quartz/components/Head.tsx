@@ -9,7 +9,6 @@ export default (() => {
     const description =
       fileData.description?.trim() ?? i18n(cfg.locale).propertyDefaults.description
     const { css, js } = externalResources
-    const ogImagePath = `https://${cfg.baseUrl}/static/og-image.png`
     return (
       <head>
         <title>{title}</title>
@@ -22,9 +21,17 @@ export default (() => {
           </>
         )}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={i18n(cfg.locale).pages.rss.title}
+          href={`https://${cfg.baseUrl}/index.xml`}
+        />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        {cfg.baseUrl && <meta property="og:image" content={ogImagePath} />}
+        {cfg.baseUrl && (
+          <meta property="og:image" content={`https://${cfg.baseUrl}/static/og-image.png`} />
+        )}
         <meta property="og:width" content="1200" />
         <meta property="og:height" content="675" />
         <link

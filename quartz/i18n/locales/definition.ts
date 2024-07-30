@@ -63,8 +63,8 @@ export interface Translation {
   }
   pages: {
     rss: {
-      recentNotes: string
-      lastFewNotes: (variables: { count: number }) => string
+      title: string
+      description: string
     }
     error: {
       title: string

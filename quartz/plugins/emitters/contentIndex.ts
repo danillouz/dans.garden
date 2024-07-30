@@ -1,13 +1,13 @@
 import { Root } from "hast"
+import { toHtml } from "hast-util-to-html"
 import { GlobalConfiguration } from "../../cfg"
 import { getDate } from "../../components/Date"
+import DepGraph from "../../depgraph"
+import { i18n } from "../../i18n"
 import { escapeHTML } from "../../util/escape"
 import { FilePath, FullSlug, SimpleSlug, joinSegments, simplifySlug } from "../../util/path"
 import { QuartzEmitterPlugin } from "../types"
-import { toHtml } from "hast-util-to-html"
 import { write } from "./helpers"
-import { i18n } from "../../i18n"
-import DepGraph from "../../depgraph"
 
 export type ContentIndex = Map<FullSlug, ContentDetails>
 export type ContentDetails = {
@@ -52,12 +52,12 @@ function generateRSSFeed(cfg: GlobalConfiguration, idx: ContentIndex, limit?: nu
   const base = cfg.baseUrl ?? ""
 
   const createURLEntry = (slug: SimpleSlug, content: ContentDetails): string => `<item>
-    <title>${escapeHTML(content.title)}</title>
-    <link>https://${joinSegments(base, encodeURI(slug))}</link>
-    <guid>https://${joinSegments(base, encodeURI(slug))}</guid>
-    <description>${content.richContent ?? content.description}</description>
-    <pubDate>${content.date?.toUTCString()}</pubDate>
-  </item>`
+  <title>${escapeHTML(content.title)}</title>
+  <link>https://${joinSegments(base, encodeURI(slug))}</link>
+  <guid>https://${joinSegments(base, encodeURI(slug))}</guid>
+  <description>${content.richContent ?? content.description}</description>
+  <pubDate>${content.date?.toUTCString()}</pubDate>
+</item>`
 
   const items = Array.from(idx)
     .sort(([_, f1], [__, f2]) => {
@@ -77,16 +77,15 @@ function generateRSSFeed(cfg: GlobalConfiguration, idx: ContentIndex, limit?: nu
 
   return `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
-    <channel>
-      <title>${escapeHTML(cfg.pageTitle)}</title>
-      <link>https://${base}</link>
-      <description>${!!limit ? i18n(cfg.locale).pages.rss.lastFewNotes({ count: limit }) : i18n(cfg.locale).pages.rss.recentNotes} on ${escapeHTML(
-        cfg.pageTitle,
-      )}</description>
-      <generator>Quartz -- quartz.jzhao.xyz</generator>
-      ${items}
-    </channel>
-  </rss>`
+  <channel>
+    <title>${i18n(cfg.locale).pages.rss.title}</title>
+    <link>https://${base}</link>
+    <description>${i18n(cfg.locale).pages.rss.description}</description>
+    <language>${cfg.locale}</language>
+    <generator>Generated with Quartz</generator>
+    ${items}
+  </channel>
+</rss>`
 }
 
 export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
