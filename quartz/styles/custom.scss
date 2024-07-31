@@ -9,8 +9,18 @@
 
 .page {
   & > #quartz-body {
-    & .sidebar {
+    & .sidebar.left {
+      @media (max-width: 640px) {
+        gap: 1rem;
+      }
+    }
+
+    & .sidebar.right {
       flex-direction: column;
+
+      @media (max-width: 640px) {
+        gap: 1rem;
+      }
 
       @media (min-width: 640px) {
         flex-direction: row;
@@ -18,13 +28,6 @@
 
       @media (min-width: $fullPageWidth) {
         flex-direction: column;
-      }
-    }
-
-    & .sidebar.left {
-      @media (max-width: 640px) {
-        gap: 1.5rem;
-        align-items: flex-start;
       }
     }
   }
@@ -49,6 +52,13 @@
 }
 
 .search {
+  flex-grow: 1;
+  max-width: none;
+
+  @media (min-width: 640px) {
+      max-width: 10rem;
+    }
+
   & > #search-container {
     & > #search-space {
       & > * {
@@ -128,6 +138,10 @@ hr {
   & > p {
     color: var(--gray);
   }
+}
+
+.not-found-page {
+  text-align: center;
 }
 
 ::selection {
