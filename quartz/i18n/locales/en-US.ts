@@ -65,9 +65,9 @@ export default {
       description: "Fresh from Dan's garden.",
     },
     error: {
-      title: "Not Found",
-      notFound: "Either this page is private or doesn't exist.",
-      home: "Return to Homepage",
+      title: "Page Not Found",
+      notFound: "This page doesn't exist.",
+      home: "Back Home",
     },
     folderContent: {
       folder: "Folder",
