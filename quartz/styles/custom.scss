@@ -104,6 +104,73 @@
   color: var(--gray);
 }
 
+:root[saved-theme="light"] {
+  .callout {
+    &[data-callout] {
+      // Rose Piné "Base" (dawn).
+      --bg: #faf4ed;
+      // Rose Piné "Highlight Med" (dawn).
+      --border: #dfdad9;
+      // Rose Piné "Highlight Foam" (dawn).
+      --color: #56949f;
+    }
+    &[data-callout="abstract"],
+    &[data-callout="info"],
+    &[data-callout="todo"],
+    &[data-callout="tip"],
+    &[data-callout="success"] {
+      // Rose Piné "Highlight Foam" (dawn).
+      --color: #56949f;
+    }
+    &[data-callout="question"],
+    &[data-callout="warning"],
+    &[data-callout="example"],
+    &[data-callout="quote"] {
+      // Rose Piné "Highlight Gold" (dawn).
+      --color: #ea9d34;
+    }
+    &[data-callout="failure"],
+    &[data-callout="danger"],
+    &[data-callout="bug"] {
+      // Rose Piné "Highlight Love" (dawn).
+      --color: #b4637a;
+    }
+  }
+}
+:root[saved-theme="dark"] {
+  .callout {
+    &[data-callout] {
+      // Rose Piné "Base" (moon).
+      --bg: #232136;
+      // Rose Piné "Highlight Med (moon).
+      --border: #44415a;
+      // Rose Piné "Highlight Pine" (moon).
+      --color: #f6c177;
+    }
+    &[data-callout="abstract"],
+    &[data-callout="info"],
+    &[data-callout="todo"],
+    &[data-callout="tip"],
+    &[data-callout="success"] {
+      // Rose Piné "Highlight Foam" (moon).
+      --color: #9ccfd8;
+    }
+    &[data-callout="question"],
+    &[data-callout="warning"],
+    &[data-callout="example"],
+    &[data-callout="quote"] {
+      // Rose Piné "Highlight Gold" (moon).
+      --color: #f6c177;
+    }
+    &[data-callout="failure"],
+    &[data-callout="danger"],
+    &[data-callout="bug"] {
+      // Rose Piné "Highlight Love" (moon).
+      --color: #eb6f92;
+    }
+  }
+}
+
 hr {
   overflow: visible;
   padding: 0;
