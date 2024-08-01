@@ -9,7 +9,7 @@ export default ((opts?: Options) => {
   const Footer: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
     const links = opts?.links ?? {}
     return (
-      <footer id="quartz-footer" class={`${displayClass ?? ""}`}>
+      <footer class={`${displayClass ?? ""}`}>
         {Object.keys(links).length > 0 && (
           <ul>
             {Object.entries(links).map(([text, link]) => (

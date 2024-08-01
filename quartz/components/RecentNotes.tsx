@@ -1,12 +1,12 @@
-import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { FullSlug, SimpleSlug, resolveRelative } from "../util/path"
-import { QuartzPluginData } from "../plugins/vfile"
-import { byDateAndAlphabetical } from "./PageList"
-import style from "./styles/recentNotes.scss"
-import { Date, getDate } from "./Date"
 import { GlobalConfiguration } from "../cfg"
 import { i18n } from "../i18n"
+import { QuartzPluginData } from "../plugins/vfile"
 import { classNames } from "../util/lang"
+import { FullSlug, SimpleSlug, resolveRelative } from "../util/path"
+import { Date, getDate } from "./Date"
+import { byDateAndAlphabetical } from "./PageList"
+import style from "./styles/recentNotes.scss"
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
 interface Options {
   title?: string
@@ -37,7 +37,7 @@ export default ((userOpts?: Partial<Options>) => {
     const remaining = Math.max(0, pages.length - opts.limit)
     return (
       <div class={classNames(displayClass, "recent-notes")}>
-        <h3>{opts.title ?? i18n(cfg.locale).components.recentNotes.title}</h3>
+        <h1>{opts.title ?? i18n(cfg.locale).components.recentNotes.title}</h1>
         <ul class="recent-ul">
           {pages.slice(0, opts.limit).map((page) => {
             const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title

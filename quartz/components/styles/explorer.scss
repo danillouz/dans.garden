@@ -20,7 +20,6 @@ button#explorer {
   & .fold {
     margin-left: 0.5rem;
     transition: transform 0.3s ease;
-    opacity: 0.8;
   }
 
   &.collapsed .fold {
@@ -59,11 +58,9 @@ button#explorer {
     padding: 0;
     transition:
       max-height 0.35s ease,
-      transform 0.35s ease,
-      opacity 0.2s ease;
+      transform 0.35s ease;
     & li > a {
       color: var(--dark);
-      opacity: 0.75;
       pointer-events: all;
     }
   }

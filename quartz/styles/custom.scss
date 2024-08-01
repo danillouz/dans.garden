@@ -100,6 +100,10 @@
   }
 }
 
+.meta {
+  color: var(--gray);
+}
+
 hr {
   overflow: visible;
   padding: 0;
@@ -119,7 +123,20 @@ hr {
   }
 }
 
+.backlinks {
+  li {
+    color: var(--gray);
+  }
+}
+
 .graph {
+  & > .graph-outer {
+    & > #global-graph-icon {
+      color: var(--darkgray);
+      opacity: 1;
+    }
+  }
+
   & > #global-graph-outer {
     & > #global-graph-container {
       box-shadow:
@@ -129,7 +146,28 @@ hr {
   }
 }
 
-#quartz-footer {
+// listPage.scss
+li.section-li {
+  & > .section {
+    & > .meta {
+      opacity: 1;
+    }
+  }
+}
+
+#toc-content {
+  & ul {
+    & > li > a {
+      color: var(--secondary);
+
+      &.in-view {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+footer {
   text-align: center;
   margin: 2rem auto;
   opacity: 1;
