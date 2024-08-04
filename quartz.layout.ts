@@ -32,7 +32,8 @@ export const defaultContentPageLayout: PageLayout = {
         showTags: false,
         filter: (f) => {
           const isIndexPage = f.filePath?.endsWith("/index.md")
-          return !isIndexPage
+          const isTag = f.filePath?.startsWith("content/tags/")
+          return !isIndexPage && !isTag
         },
       }),
     ),
@@ -71,7 +72,8 @@ export const defaultListPageLayout: PageLayout = {
         showTags: false,
         filter: (f) => {
           const isIndexPage = f.filePath?.endsWith("/index.md")
-          return !isIndexPage
+          const isTag = f.filePath?.startsWith("content/tags/")
+          return !isIndexPage && !isTag
         },
       }),
     ),
