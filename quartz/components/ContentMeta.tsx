@@ -54,13 +54,14 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
             </>
           )}
 
-          {readingDuration && <> &bull; {readingDuration}</>}
-
           {updatedAt && (
             <>
-              <br /> {i18n(cfg.locale).components.contentMeta.updatedAt} {updatedAt}
+              {" "}
+              &bull; {i18n(cfg.locale).components.contentMeta.updatedAt} {updatedAt}
             </>
           )}
+
+          {readingDuration && <> &bull; {readingDuration}</>}
         </p>
       )
     } else {
