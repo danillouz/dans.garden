@@ -72,11 +72,11 @@ export default {
     folderContent: {
       folder: "Folder",
       itemsUnderFolder: ({ count }) =>
-        count === 1 ? "1 item under this folder." : `${count} items under this folder.`,
+        count === 1 ? "1 item in this folder." : `${count} items in this folder.`,
     },
     tagContent: {
       tag: "Tag",
-      tagIndex: "Tag Index",
+      tagIndex: "Tags",
       itemsUnderTag: ({ count }) =>
         count === 1 ? "1 item with this tag." : `${count} items with this tag.`,
       showingFirst: ({ count }) => `Showing first ${count} tags.`,
