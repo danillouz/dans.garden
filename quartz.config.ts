@@ -31,7 +31,7 @@ const config: QuartzConfig = {
       // https://rosepinetheme.com/palette
       //
       // - `light`: Background (Rosé Pine "Surface").
-      // - `lightgray`: Borders (Rosé Pine "Highlight Med").
+      // - `lightgray`: Borders (Rosé Pine "Overlay").
       // - `gray`: Graph links, page metadata (Rosé Pine "Muted").
       // - `darkgray`: Text (Rosé Pine "Text").
       // - `dark`: Headers (Rosé Pine "Pine").
@@ -44,7 +44,7 @@ const config: QuartzConfig = {
       colors: {
         lightMode: {
           light: "#fffaf3",
-          lightgray: "#dfdad9",
+          lightgray: "#f2e9e1",
           gray: "#9893a5",
           darkgray: "#575279",
           dark: "#286983",
@@ -55,7 +55,7 @@ const config: QuartzConfig = {
         },
         darkMode: {
           light: "#2a273f",
-          lightgray: "#44415a",
+          lightgray: "#393552",
           gray: "#6e6a86",
           darkgray: "#e0def4",
           dark: "#3e8fb0",
