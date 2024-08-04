@@ -75,7 +75,6 @@ export default {
         count === 1 ? "1 item in this folder." : `${count} items in this folder.`,
     },
     tagContent: {
-      tag: "Tag",
       tagIndex: "Tags",
       itemsUnderTag: ({ count }) =>
         count === 1 ? "1 item with this tag." : `${count} items with this tag.`,
