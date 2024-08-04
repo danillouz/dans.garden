@@ -55,7 +55,7 @@ export default (() => {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         {cfg.baseUrl && (
-          <meta property="og:image" content={`https://${cfg.baseUrl}/static/og-image.png`} />
+          <meta property="og:image" content={`https://${cfg.baseUrl}/static/og-image.jpeg`} />
         )}
 
         {/* Fonts, CSS and JS. */}
