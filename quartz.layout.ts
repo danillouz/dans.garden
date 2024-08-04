@@ -30,6 +30,10 @@ export const defaultContentPageLayout: PageLayout = {
       Component.RecentNotes({
         limit: 3,
         showTags: false,
+        filter: (f) => {
+          const isIndexPage = f.filePath?.endsWith("/index.md")
+          return !isIndexPage
+        },
       }),
     ),
     Component.DesktopOnly(
@@ -65,6 +69,10 @@ export const defaultListPageLayout: PageLayout = {
       Component.RecentNotes({
         limit: 3,
         showTags: false,
+        filter: (f) => {
+          const isIndexPage = f.filePath?.endsWith("/index.md")
+          return !isIndexPage
+        },
       }),
     ),
     Component.DesktopOnly(
