@@ -263,3 +263,9 @@ footer {
   background: color-mix(in srgb, var(--tertiary) 50%, rgba(255, 255, 255, 0));
   color: var(--darkgray);
 }
+
+:root[saved-theme="dark"] {
+  img {
+    filter: brightness(0.8) contrast(1.2);
+  }
+}
