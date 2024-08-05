@@ -1,8 +1,8 @@
 ---
 title: "AWS Lambda and the Node.js event loop"
 description: "Lambda can freeze and thaw its execution context, which can impact Node.js event loop behavior."
-date: "2019-05-30"
-updated: "2023-02-03"
+date: 2019-05-30
+updated: 2023-02-03
 tags:
   - evergreen
 ---
@@ -31,7 +31,7 @@ Every time a function is called, it's _pushed_ onto the stack (i.e. added to the
 
 The frames in a stack are popped off in <abbr title="Last In First Out">LIFO</abbr> order.
 
-![[call-stack.png]]
+![[attachments/lambda-nodejs-event-loop/call-stack.png]]
 
 Each frame stores information about the invoked function. Like the arguments the function was called with and any variables defined inside the called function's body.
 
