@@ -1,6 +1,6 @@
 ---
-title: "Serverless auth"
-description: "Protecting AWS API Gateway endpoints with AWS Lambda and Auth0."
+title: Serverless auth
+description: Protecting AWS API Gateway endpoints with AWS Lambda and Auth0.
 date: 2019-06-19
 updated: 2023-02-03
 tags:
