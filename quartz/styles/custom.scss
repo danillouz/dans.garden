@@ -240,9 +240,23 @@ hr {
   }
 }
 
+.page-listing {
+  & > p {
+    color: var(--tertiary);
+  }
+}
+
 // listPage.scss
 li.section-li {
   & > .section {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+
+    @media (max-width: $mobileBreakpoint) {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
     & > .meta {
       opacity: 1;
     }
