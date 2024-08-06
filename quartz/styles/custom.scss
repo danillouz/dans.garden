@@ -83,6 +83,10 @@
     max-width: 10rem;
   }
 
+  @media (min-width: $fullPageWidth) {
+    max-width: none;
+  }
+
   & > #search-container {
     & > #search-space {
       & > * {
