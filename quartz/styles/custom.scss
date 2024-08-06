@@ -183,6 +183,21 @@
   }
 }
 
+p,
+ul,
+text,
+a,
+tr,
+td,
+li,
+ol,
+ul,
+.katex,
+.math {
+  hyphens: none;
+  text-wrap: wrap;
+}
+
 hr {
   overflow: visible;
   padding: 0;
