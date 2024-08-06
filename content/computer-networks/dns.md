@@ -1,9 +1,10 @@
 ---
-title: The Domain Name System
+title: DNS
 description: What I learned about DNS so far.
 date: 2023-06-03
+updated: 2024-08-06
 aliases:
-  - dns
+  - The Domain Name System
 tags:
   - evergreen
 ---
@@ -69,7 +70,7 @@ For example, the labels of the domain names:
 
 - `www.framer.com`
 - `github.com`
-- `www.danillouz.dev`
+- `dans.garden`
 - `en.wikipedia.org`
 
 Can be visualized in the domain name space like this:
@@ -77,15 +78,14 @@ Can be visualized in the domain name space like this:
 ```mermaid
 graph TD;
   A[.]-->B[com];
-  A-->C[dev];
+  A-->C[garden];
   A-->D[org];
   B-->E[framer];
   B-->F[github];
-  E-->G[www];
-  C-->H[danillouz];
-  H-->I[www];
-  D-->J[wikipedia]
-  J-->K[en]
+  C-->G[dans]
+  D-->H[wikipedia]
+  E-->I[www]
+  H-->J[en]
 ```
 
 #### Top-level domains and subdomains
@@ -145,7 +145,12 @@ There are 4 different kind of servers needed to make DNS work:
 
 [^7]: But you can change this in the network settings of your operating system and use a different resolver, like Cloudflare's [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/) or Google's [8.8.8.8](https://developers.google.com/speed/public-dns/docs/using).
 
-> **I used to be really confused about what authoritative name servers are, and how they differ from other name servers.** But an authoritative name server is just the name server that "knows" the information being queried by a resolver. So it actually depends on the query type which name server is authoritative. For example, root name servers are authoritative for the root zone, TLD name servers are authoritative for a TLD zone, and when querying the A record for a domain name, the name server that stores the IPv4 address is authoritative.
+> [!note] About authoritative name servers
+> I used to be really confused about what authoritative name servers are, and how they differ from other name servers.
+>
+> But an authoritative name server is just the name server that "knows" the information being queried by a resolver. So it actually depends on the query type which name server is authoritative.
+>
+> For example, root name servers are authoritative for the root zone, TLD name servers are authoritative for a TLD zone, and when querying the A record for a domain name, the name server that stores the IPv4 address is authoritative.
 
 With that covered, we can finally answer the question below.
 
@@ -160,7 +165,12 @@ The following occurs when a browser uses DNS to look up the IP address of a doma
 5. The resolver responds with the IP address of the domain name to the browser.
 6. The browser can now make an HTTP request to the IP address and fetch the website.
 
-> **Note that the steps above happen for uncached queries.** Since there can be a lot steps needed to look up information for a domain name, resolvers will cache the results of queries. So when a query is made for a domain name that was recently looked up, the resolver can skip (some of) the steps above and return the cached result immediately. Caching can happen at every step above, on the name servers, resolver, on the browser and operating system.
+> [!info] The steps above are for uncached queries
+> Since there can be a lot steps needed to look up information for a domain name, resolvers will cache the results of queries.
+>
+> For example, when a query is made for a domain name that was recently looked up, the resolver can skip (some of) the steps above and return the cached result(s) immediately.
+>
+> Caching can happen at every step above, on the name servers, resolver, on the browser and operating system.
 
 ## Bonus: how is the domain name system managed?
 
@@ -192,7 +202,7 @@ Registries allow registrars to partner with them by entering a **Registry-Regist
 
 [^10]: Registrars usually use the [Extensible Provisioning Protocol](https://en.wikipedia.org/wiki/Extensible_Provisioning_Protocol) (EPP) to interact with registries.
 
-[^11]: The registrar must pay fees every time a domain name is registered, renewed or transferred. There's the registry fee (as defined in the Registry-Registrant Agreement). And the $0.18 ICANN fee. But there might also be other fees, like a [yearly fee of $4000](https://www.icann.org/resources/pages/registrar-fees-2018-08-10-en) when the registry is ICANN accredited.
+[^11]: The registrar must pay fees every time a domain name is registered, renewed or transferred. There's the registry fee (as defined in the Registry-Registrant Agreement). And the `$0.18` ICANN fee. But there might also be other fees, like a [yearly fee of $4000](https://www.icann.org/resources/pages/registrar-fees-2018-08-10-en) when the registry is ICANN accredited.
 
 ## In closing
 
