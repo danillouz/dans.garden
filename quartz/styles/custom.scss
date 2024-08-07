@@ -36,7 +36,7 @@
         & .recent-notes {
           grid-area: 2 / 1 / 2 / 4;
 
-          & ul li a.internal {
+          & ul li a {
             font-family: var(--bodyFont);
           }
         }

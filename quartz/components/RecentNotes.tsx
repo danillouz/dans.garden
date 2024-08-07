@@ -48,9 +48,7 @@ export default ((userOpts?: Partial<Options>) => {
                 <div class="section">
                   <div class="desc">
                     <h3>
-                      <a href={resolveRelative(fileData.slug!, page.slug!)} class="internal">
-                        {title}
-                      </a>
+                      <a href={resolveRelative(fileData.slug!, page.slug!)}>{title}</a>
                     </h3>
                   </div>
                   {page.dates && (
@@ -63,7 +61,7 @@ export default ((userOpts?: Partial<Options>) => {
                       {tags.map((tag) => (
                         <li>
                           <a
-                            class="internal tag-link"
+                            class="tag-link"
                             href={resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)}
                           >
                             {tag}
