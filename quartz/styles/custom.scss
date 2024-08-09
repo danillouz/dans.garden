@@ -253,20 +253,17 @@ pre {
 }
 
 hr {
+  font-family: var(--codeFont);
   overflow: visible;
-  padding: 0;
   height: 0;
   margin: 4rem auto;
-  border: none;
   text-align: center;
-  width: 100%;
 
   &:after {
     content: "* * *";
     display: inline-block;
-    margin: -1em 0 0.5em;
-    font-size: 1.5em;
-    padding: 0.5em 1em;
+    margin: -1rem 0;
+    font-size: 1.5rem;
     color: var(--gray);
   }
 }
