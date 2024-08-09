@@ -1,11 +1,36 @@
 @use "./variables.scss" as *;
 @use "./base.scss";
 
+//#region Layout.
+
 #quartz-root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
+
+footer {
+  text-align: center;
+  margin: 2rem auto;
+  opacity: 1;
+
+  @media (min-width: $fullPageWidth) {
+    margin: 0 auto;
+  }
+
+  & > p {
+    color: var(--gray);
+  }
+
+  & > ul {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+//#region Layout left/right sidebar.
 
 .page {
   & > #quartz-body {
@@ -104,17 +129,63 @@
   }
 }
 
-.popover {
-  & > .popover-inner {
-    box-shadow:
-      0 20px 25px -5px rgb(0 0 0 / 0.1),
-      0 8px 10px -6px rgb(0 0 0 / 0.1);
+#toc-content {
+  & ul {
+    & > li > a {
+      color: var(--secondary);
+
+      &.in-view {
+        opacity: 1;
+      }
+    }
   }
 }
+
+.backlinks {
+  li {
+    color: var(--gray);
+  }
+}
+
+.graph {
+  & > .graph-outer {
+    & > #global-graph-icon {
+      color: var(--darkgray);
+      opacity: 1;
+    }
+  }
+
+  & > #global-graph-outer {
+    & > #global-graph-container {
+      box-shadow:
+        0 20px 25px -5px rgb(0 0 0 / 0.1),
+        0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+  }
+}
+
+//#region Article content.
 
 .meta {
   color: var(--gray);
 }
+
+p,
+ul,
+text,
+a,
+tr,
+td,
+li,
+ol,
+ul,
+.katex,
+.math {
+  hyphens: none;
+  text-wrap: wrap;
+}
+
+//#region Article callouts.
 
 :root[saved-theme="light"] {
   .callout {
@@ -183,20 +254,7 @@
   }
 }
 
-p,
-ul,
-text,
-a,
-tr,
-td,
-li,
-ol,
-ul,
-.katex,
-.math {
-  hyphens: none;
-  text-wrap: wrap;
-}
+//#region Article code blocks.
 
 figure[data-rehype-pretty-code-figure] {
   & > [data-rehype-pretty-code-title] {
@@ -252,6 +310,8 @@ pre {
   }
 }
 
+//#region Article divider.
+
 hr {
   font-family: var(--codeFont);
   overflow: visible;
@@ -268,28 +328,7 @@ hr {
   }
 }
 
-.backlinks {
-  li {
-    color: var(--gray);
-  }
-}
-
-.graph {
-  & > .graph-outer {
-    & > #global-graph-icon {
-      color: var(--darkgray);
-      opacity: 1;
-    }
-  }
-
-  & > #global-graph-outer {
-    & > #global-graph-container {
-      box-shadow:
-        0 20px 25px -5px rgb(0 0 0 / 0.1),
-        0 8px 10px -6px rgb(0 0 0 / 0.1);
-    }
-  }
-}
+//#region Other page(s).
 
 .page-listing {
   & > p {
@@ -297,7 +336,7 @@ hr {
   }
 }
 
-// listPage.scss
+// From: listPage.scss
 li.section-li {
   & > .section {
     display: grid;
@@ -314,41 +353,18 @@ li.section-li {
   }
 }
 
-#toc-content {
-  & ul {
-    & > li > a {
-      color: var(--secondary);
-
-      &.in-view {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-footer {
-  text-align: center;
-  margin: 2rem auto;
-  opacity: 1;
-
-  @media (min-width: $fullPageWidth) {
-    margin: 0 auto;
-  }
-
-  & > p {
-    color: var(--gray);
-  }
-
-  & > ul {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-  }
-}
-
 .not-found-page {
   text-align: center;
+}
+
+//#region misc.
+
+.popover {
+  & > .popover-inner {
+    box-shadow:
+      0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
 }
 
 ::selection {
