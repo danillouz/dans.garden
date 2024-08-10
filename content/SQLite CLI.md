@@ -39,8 +39,8 @@ When in interactive mode, the prompt is `sqlite>` and it reads text input from t
 
 But it's also possible to redirect `sqlite3` I/O (input/output) to:
 
-- [Read SQL statements from a file](#read-sql-statements-from-a-file).
-- [Write results to a file](#write-results-to-a-file).
+- [[#Read SQL statements from a file]]
+- [[#Write results to a file]]
 
 ### Help
 

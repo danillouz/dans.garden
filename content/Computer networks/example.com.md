@@ -12,7 +12,7 @@ Such domains are sometimes called **special use domain names**, and the full lis
 
 ## Special TLDs
 
-The most notable special [TLDs](/posts/dns#top-level-domains-and-subdomains) are:
+The most notable special [[DNS#Top-level domains and subdomains|TLDs]] are:
 
 - `test`
 - `example`

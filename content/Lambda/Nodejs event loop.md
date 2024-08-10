@@ -13,7 +13,7 @@ Lambda is powered by a [virtualization technology](https://aws.amazon.com/blogs/
 
 This will make your code run faster, but can impact the "expected" event loop behavior. We'll explore this in detail. But before we dive in, lets quickly refresh the Node.js concurrency model.
 
-If you're already familiar with the event loop, you can jump straight to the [AWS Lambda](#aws-lambda) section.
+If you're already familiar with the event loop, you can jump straight to the [[#AWS Lambda]] section.
 
 ## Concurrency model
 
@@ -31,7 +31,7 @@ Every time a function is called, it's _pushed_ onto the stack (i.e. added to the
 
 The frames in a stack are popped off in <abbr title="Last In First Out">LIFO</abbr> order.
 
-![[attachments/lambda-nodejs-event-loop/call-stack.png]]
+![[_assets/Nodejs event loop/Call stack.png]]
 
 Each frame stores information about the invoked function. Like the arguments the function was called with and any variables defined inside the called function's body.
 
@@ -55,7 +55,7 @@ main()
 
 We can visualize the call stack over time like this.
 
-![[attachments/lambda-nodejs-event-loop/call-stack/1.png]]
+![[_assets/Nodejs event loop/Call stack/1.png]]
 
 1. When the script starts executing, the call stack is empty.
 
@@ -95,7 +95,7 @@ function main() {
 main()
 ```
 
-![[attachments/lambda-nodejs-event-loop/call-stack/2.png]]
+![[_assets/Nodejs event loop/Call stack/2.png]]
 
 4. `console.log` executes, prints `main start`, and is popped off the call stack.
 
@@ -135,7 +135,7 @@ function main() {
 main()
 ```
 
-![[attachments/lambda-nodejs-event-loop/call-stack/3.png]]
+![[_assets/Nodejs event loop/Call stack/3.png]]
 
 7. `console.log` executes, prints `do work`, and is popped off the call stack.
 
@@ -159,7 +159,7 @@ function main() {
 main()
 ```
 
-![[attachments/lambda-nodejs-event-loop/call-stack/4.png]]
+![[_assets/Nodejs event loop/Call stack/4.png]]
 
 10. `console.log` executes, prints `main end`, and is popped off the call stack.
 
@@ -173,7 +173,7 @@ Any asynchronous work in the runtime is represented as a task in a queue, or in 
 
 Each message can be thought of as a function that will be called in <abbr title="First In First Out">FIFO</abbr> order to handle said work. For example, the callback provided to the `setTimeout` or `Promise` API.
 
-![[attachments/lambda-nodejs-event-loop/queue.png]]
+![[_assets/Nodejs event loop/Queue.png]]
 
 Additionally, each message is processed _completely_ before any other message is processed. This means that **whenever a function runs it can't be interrupted**. This behavior is called _run-to-completion_ and makes it easier to reason about our JavaScript programs.
 
@@ -203,7 +203,7 @@ To summarize:
 - Whenever calls are made via asynchronous (internal) APIs (like `setTimeout` or `Promise`) the corresponding callbacks are eventually added to the task queue.
 - When the call stack is empty and the task queue contains one or more tasks, the event loop will remove a task on every tick and push it onto the call stack. The function will execute and this process will continue until all work is done.
 
-![[attachments/lambda-nodejs-event-loop/event-loop.png]]
+![[_assets/Nodejs event loop/Event loop.png]]
 
 With that covered, we can explore how the AWS Lambda execution environment interacts with the Node.js event loop.
 
@@ -286,11 +286,11 @@ exports.handler = main
 
 You can create a new function in the AWS Lambda console and paste in the code from above. Run it, sit back and enjoy.
 
-![[attachments/lambda-nodejs-event-loop/console/1.png]]
+![[_assets/Nodejs event loop/Console/1.png]]
 
 Wait, what? Lambda just ended the handler function _without_ printing the last message `timeout cb fired after 5000 ms`. Lets run it again.
 
-![[attachments/lambda-nodejs-event-loop/console/2.png]]
+![[_assets/Nodejs event loop/Console/2.png]]
 
 It now prints `timeout cb fired after 5000 ms` _first_ and then the other ones! So what's going on here?
 
@@ -332,11 +332,11 @@ Looking further, there's some documentation about the context object. Specifical
 
 Okay, so with this information we can make sense of what happened when we executed the code in `timeout.js` before. Lets break it down and go over it step by step.
 
-![[attachments/lambda-nodejs-event-loop/lambda/1.png]]
+![[_assets/Nodejs event loop/Lambda/1.png]]
 
 1. Lambda starts executing the code in `timeout.js`. The call stack is empty.
 
-![[attachments/lambda-nodejs-event-loop/lambda/2.png]]
+![[_assets/Nodejs event loop/Lambda/2.png]]
 
 2. `main` is called, and pushed onto to the call stack:
 
@@ -363,7 +363,7 @@ async function main() {
 exports.handler = main
 ```
 
-![[attachments/lambda-nodejs-event-loop/lambda/3.png]]
+![[_assets/Nodejs event loop/Lambda/3.png]]
 
 3. While executing `main`, `console.log("main start")` is called, and pushed onto the call stack:
 
@@ -390,11 +390,11 @@ async function main() {
 exports.handler = main
 ```
 
-![[attachments/lambda-nodejs-event-loop/lambda/4.png]]
+![[_assets/Nodejs event loop/Lambda/4.png]]
 
 4. `console.log` executes, prints `main start`, and is popped off the call stack.
 
-![[attachments/lambda-nodejs-event-loop/lambda/5.png]]
+![[_assets/Nodejs event loop/Lambda/5.png]]
 
 5. `main` continues executing, calls `timeout(5e3)`, and is pushed onto the call stack:
 
@@ -421,7 +421,7 @@ async function main() {
 exports.handler = main
 ```
 
-![[attachments/lambda-nodejs-event-loop/lambda/6.png]]
+![[_assets/Nodejs event loop/Lambda/6.png]]
 
 6. While executing `timeout`, `console.log("timeout start")` is called, and pushed onto the call stack:
 
@@ -448,11 +448,11 @@ async function main() {
 exports.handler = main
 ```
 
-![[attachments/lambda-nodejs-event-loop/lambda/7.png]]
+![[_assets/Nodejs event loop/Lambda/7.png]]
 
 7. `console.log` executes, prints `timeout start`, and is popped off the call stack.
 
-![[attachments/lambda-nodejs-event-loop/lambda/8.png]]
+![[_assets/Nodejs event loop/Lambda/8.png]]
 
 8. `timeout` continues executing, calls `new Promise(callback)` on line 6, and is pushed onto the call stack:
 
@@ -479,19 +479,19 @@ async function main() {
 exports.handler = main
 ```
 
-![[attachments/lambda-nodejs-event-loop/lambda/9.png]]
+![[_assets/Nodejs event loop/Lambda/9.png]]
 
 9. While `new Promise(callback)` executes, it interacts with the `Promise` API and passes the provided callback to it. The `Promise` API sends the callback to the task queue and now must wait until the call stack is empty before it can execute.
 
-![[attachments/lambda-nodejs-event-loop/lambda/10.png]]
+![[_assets/Nodejs event loop/Lambda/10.png]]
 
 10. `new Promise` finishes executing, and is popped of the call stack.
 
-![[attachments/lambda-nodejs-event-loop/lambda/11.png]]
+![[_assets/Nodejs event loop/Lambda/11.png]]
 
 11. `timeout` finishes executing, and is popped off the call stack.
 
-![[attachments/lambda-nodejs-event-loop/lambda/12.png]]
+![[_assets/Nodejs event loop/Lambda/12.png]]
 
 12. `main` continues executing, calls `console.log("main end")`, and is pushed onto the call stack:
 
@@ -518,19 +518,19 @@ async function main() {
 exports.handler = main
 ```
 
-![[attachments/lambda-nodejs-event-loop/lambda/13.png]]
+![[_assets/Nodejs event loop/Lambda/13.png]]
 
 13. `console.log` executes, prints `main end`, and is popped off the call stack.
 
-![[attachments/lambda-nodejs-event-loop/lambda/14.png]]
+![[_assets/Nodejs event loop/Lambda/14.png]]
 
 14. `main` finishes executing, and is popped off the call stack. The call stack is empty.
 
-![[attachments/lambda-nodejs-event-loop/lambda/15.png]]
+![[_assets/Nodejs event loop/Lambda/15.png]]
 
 15. The `Promise` callback (step 9) can now be scheduled by the event loop, and is pushed onto the call stack.
 
-![[attachments/lambda-nodejs-event-loop/lambda/16.png]]
+![[_assets/Nodejs event loop/Lambda/16.png]]
 
 16. The `Promise` callback executes, calls `setTimeout(callback, timeout)` on line 7, and is pushed onto the call stack:
 
@@ -557,33 +557,33 @@ async function main() {
 exports.handler = main
 ```
 
-![[attachments/lambda-nodejs-event-loop/lambda/17.png]]
+![[_assets/Nodejs event loop/Lambda/17.png]]
 
 17. While `setTimeout(callback, timeout)` executes, it interacts with the `setTimeout` API and passes the corresponding callback and timeout to it.
 
-![[attachments/lambda-nodejs-event-loop/lambda/18.png]]
+![[_assets/Nodejs event loop/Lambda/18.png]]
 
 18. `setTimeout(callback, timeout)` finishes executing and is popped of the call stack. At the same time the `setTimeout` API starts counting down the timeout, to schedule the callback function in the future.
 
-![[attachments/lambda-nodejs-event-loop/lambda/19.png]]
+![[_assets/Nodejs event loop/Lambda/19.png]]
 
 19. The Promise callback finishes executing and is popped off the call stack. The call stack is empty again.
 
 At this point the call stack and task queue are both empty. At the same time a timeout is counting down (5 seconds), but the corresponding timeout callback has _not_ been scheduled yet. As far as Lambda is concerned, the event loop is empty. So it will _freeze_ the process and return results to the caller!
 
-The interesting part here is that Lambda doesn't immediately destroy its execution context. Because if we wait for +5 seconds and run the Lambda again (like in the [second run](#what-happens-in-lambda-stays-in-lambda)) we see the console message printed from the `setTimeout` callback first.
+The interesting part here is that Lambda doesn't immediately destroy its execution context. Because if we wait for +5 seconds and run the Lambda again (like in the [[#What happens in Lambda, stays in Lambda|second run]]) we see the console message printed from the `setTimeout` callback first.
 
 This happens because after the Lambda stopped executing, the execution context was still around. And after waiting for +5 seconds, the `setTimeout` API sent the corresponding callback to the task queue:
 
-![[attachments/lambda-nodejs-event-loop/lambda/exec-context-1.png]]
+![[_assets/Nodejs event loop/Lambda/Exec context 1.png]]
 
 When we execute the Lambda again (second run), the call stack is empty with a message in the task queue, which can immediately be scheduled by the event loop:
 
-![[attachments/lambda-nodejs-event-loop/lambda/exec-context-2.png]]
+![[_assets/Nodejs event loop/Lambda/Exec context 2.png]]
 
 This results in `timeout cb fired after 5000 ms` being printed first, because it executed before any of the code in our Lambda function:
 
-![[attachments/lambda-nodejs-event-loop/lambda/exec-context-3.png]]
+![[_assets/Nodejs event loop/Lambda/Exec context 3.png]]
 
 ### Doing it right
 
@@ -633,7 +633,7 @@ exports.handler = main
 
 When we run our code with this change, all is well now.
 
-![[attachments/lambda-nodejs-event-loop/console/3.png]]
+![[_assets/Nodejs event loop/Console/3.png]]
 
 ## In closing
 

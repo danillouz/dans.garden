@@ -1,0 +1,8 @@
+{
+  "obsidian-minimal-settings:toggle-minimal-focus-mode": [
+    {
+      "modifiers": ["Mod", "Shift"],
+      "key": "Z"
+    }
+  ]
+}

@@ -4,8 +4,17 @@ node_modules
 public
 prof
 tsconfig.tsbuildinfo
-.obsidian
 .quartz-cache
 private/
 .replit
 replit.nix
+
+# Currently using the `/content` dir as an Obsidian vault.
+/content/.obsidian/*
+!/content/.obsidian/app.json
+!/content/.obsidian/appearance.json
+!/content/.obsidian/community-plugins.json
+!/content/.obsidian/core-plugins-migration.json
+!/content/.obsidian/core-plugins.json
+!/content/.obsidian/graph.json
+!/content/.obsidian/hotkeys.json

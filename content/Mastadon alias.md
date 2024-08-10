@@ -1,5 +1,5 @@
 ---
-title: Mastodon handle alias
+title: Mastodon alias
 description: Using a custom domain to alias your Mastodon handle.
 date: 2023-01-03
 updated: 2023-02-03
@@ -91,7 +91,7 @@ So if you can host some static JSON on your custom domain, you can add a WebFing
 
 You can do this by:
 
-1. [Making a WebFinger request](#making-a-webfinger-request) for your Mastodon account to get your WebFinger information.
+1. [[#Making a WebFinger request]] for your Mastodon account to get your WebFinger information.
 2. Copy-and-pasting the WebFinger JSON response from step 1 to a static file.
 3. Returning the JSON[^3] from step 2 whenever an HTTP `GET` request is made to `/.well-known/webfinger?resource=acct:{MASTODON_USERNAME}` on your custom domain.
 
@@ -142,7 +142,7 @@ export const GET: APIRoute = async function ({ params, request }) {
 
 ### Redirecting WebFinger requests
 
-Note that the [static JSON endpoint](#static-file-endpoint) I added will only serve the WebFinger information when making the request:
+Note that the [[#Static file endpoint]] I added will only serve the WebFinger information when making the request:
 
 ```sh title="HTTP request"
 GET /.well-known/webfinger.json
@@ -173,11 +173,11 @@ I'm using [Vercel](https://vercel.com/), which supports [redirects](https://verc
 
 ## Using my custom domain as an alias
 
-Now that my custom domain has a [WebFinger endpoint](#adding-a-webfinger-endpoint), I can find my Mastodon account by using my custom domain!
+Now that my custom domain has a [[#Adding a WebFinger endpoint|WebFinger endpoint]], I can find my Mastodon account by using my custom domain!
 
 For example, searching for `hi@danillouz.dev` will now give me a hit.
 
-![[attachments/mastodon-alias/mastodon-search.png]]
+![[_assets/Mastodon alias/Search.png]]
 
 ## So how useful is this?
 
@@ -246,7 +246,7 @@ And checking the v2 search API docs, we can see that `resolve` controls if a Web
 
 ### The alias behaves like a "catch-all"
 
-Since I'm [redirecting WebFinger requests](#redirecting-webfinger-requests), I'm returning the same response for all `acct:` queries. So any[^4] local username can be provided together with my custom domain.
+Since I'm [[#Redirecting WebFinger requests]], I'm returning the same response for all `acct:` queries. So any[^4] local username can be provided together with my custom domain.
 
 [^4]: Sadly, using emoji doesn't work though.
 

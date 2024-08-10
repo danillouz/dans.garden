@@ -75,8 +75,8 @@ So if we want to end up with MP3 files of the recordings, we need to transcode (
 
 We'll explore two implementations that both convert a WebM audio file to MP3:
 
-1. [Using Amazon Elastic Transcoder](#using-amazon-elastic-transcoder)
-2. [Using FFmpeg and Lambda Layers](#using-ffmpeg-and-lambda-layers)
+1. [[#Using Amazon Elastic Transcoder]]
+2. [[#Using FFmpeg and Lambda Layers]]
 
 For both implementations we'll use the [Serverless Framework](https://serverless.com) and [Node.js](https://nodejs.org/en) to write the code for the [Lambda](https://aws.amazon.com/lambda) function that converts an audio file.
 
@@ -112,23 +112,23 @@ So the flow will be like this:
 
 We'll go through the following steps to get it up and running:
 
-1. [Create a pipeline](#1-create-a-pipeline)
-2. [Choose a preset](#2-choose-a-preset)
-3. [Create an IAM Policy](#3-create-an-iam-policy)
-4. [Create a Serverless project](#4-create-a-serverless-project)
-5. [Implement the Lambda function](#5-implement-the-lambda-function)
-6. [Release the Lambda function](#6-release-the-lambda-function)
-7. [Schedule a job](#7-schedule-a-job)
+- [[#1. Create a pipeline]]
+- [[#2. Choose a preset]]
+- [[#3. Create an IAM Policy]]
+- [[#4. Create a Serverless project]]
+- [[#5. Implement the Lambda function]]
+- [[#6. Release the Lambda function]]
+- [[#7. Schedule a job]]
 
 ### 1. Create a pipeline
 
 Navigate to the Elastic Transcoder service in the AWS web console. Select a region (we'll use `eu-west-1`), and click on "Create New Pipeline".
 
-![[attachments/audio-transcoding-lambda/create-pipeline.png]]
+![[_assets/Audio transcoding/Create pipeline.png]]
 
 Create the pipeline and take note of the ARN and Pipeline ID. We'll need both to configure the Lambda function later on.
 
-![[attachments/audio-transcoding-lambda/created-pipeline.png]]
+![[_assets/Audio transcoding/Created pipeline.png]]
 
 ### 2. Choose a preset
 
@@ -136,7 +136,7 @@ The pipeline we created in the previous step requires a [preset](https://docs.aw
 
 In the web console, click on "Presets" and filter on the keyword "MP3". Select one and take note of its ARN and Preset ID. We'll also need these to configure the Lambda function.
 
-![[attachments/audio-transcoding-lambda/preset.png]]
+![[_assets/Audio transcoding/Preset.png]]
 
 ### 3. Create an IAM Policy
 
@@ -189,7 +189,7 @@ package:
     - src
 ```
 
-Add the Elastic Transcoder Pipeline ID, MP3 Preset ID and region (from [step 1](#1-create-a-pipeline) and [step 2](#2-choose-a-preset)) as environment variables:
+Add the Elastic Transcoder Pipeline ID, MP3 Preset ID and region (from [[#1. Create a pipeline|step 1]] and [[#2. Choose a preset|step 2]]) as environment variables:
 
 ```yaml title="audio-transcoder/serverless.yml" showLineNumbers {6-9}
 service: audio-transcoder
@@ -211,7 +211,7 @@ package:
     - src
 ```
 
-Use the Elastic Transcoder Pipeline ARN and MP3 Preset ARN (from [step 1](#1-create-a-pipeline) and [step 2](#2-choose-a-preset)) to configure the Lambda with the required IAM permissions, so it can create transcoder jobs:
+Use the Elastic Transcoder Pipeline ARN and MP3 Preset ARN (from [[#1. Create a pipeline|step 1]] and [[#2. Choose a preset|step 2]]) to configure the Lambda with the required IAM permissions, so it can create transcoder jobs:
 
 ```yaml title="audio-transcoder/serverless.yml" showLineNumbers {10-16}
 service: audio-transcoder
@@ -416,7 +416,7 @@ This action will trigger an `s3:ObjectCreated` event. AWS will execute the Lambd
 
 To get more information about a scheduled job, navigate to the Elastic Transcoder service in the AWS web console. Click on "Jobs", select your pipeline and click "Search". Here you can select a job to get more details about it.
 
-![[attachments/audio-transcoding-lambda/created-job.png]]
+![[_assets/Audio transcoding/Created job.png]]
 
 If it has status "Complete", there should be a file named `test.mp3` in the output bucket!
 
@@ -436,7 +436,7 @@ After we publish a layer we can configure any Lambda function to use it[^4]. AWS
 
 We're basically "swapping out" Amazon Elastic Transcoder with FFmpeg. Other than that the flow is still the same.
 
-So since we're still converting a WebM audio file to MP3 whenever it's uploaded to the input bucket, we can reuse the Lambda from the [previous implementation](#4-create-a-serverless-project) by making these changes:
+So since we're still converting a WebM audio file to MP3 whenever it's uploaded to the input bucket, we can reuse the Lambda from the [[#4. Create a Serverless project|previous implementation]] by making these changes:
 
 - Replace Amazon Elastic Transcoder with FFmpeg.
 - Within the Lambda we will:
@@ -446,12 +446,12 @@ So since we're still converting a WebM audio file to MP3 whenever it's uploaded 
 
 We'll apply these changes by going through the following steps:
 
-1. [Create and publish FFmpeg Lambda Layer](#1-create-and-publish-ffmpeg-lambda-layer)
-2. [Update the Serverless manifest](#2-update-the-serverless-manifest)
-3. [Update the Lambda function](#3-update-the-lambda-function)
-4. [Release the updated Lambda function](#4-release-the-updated-lambda-function)
-5. [Upload another WebM audio file](#5-upload-another-webm-audio-file)
-6. [Optimize the Lambda function](#6-optimize-the-lambda-function)
+- [[#1. Create and publish FFmpeg Lambda Layer]]
+- [[#2. Update the Serverless manifest]]
+- [[#3. Update the Lambda function]]
+- [[#4. Release the updated Lambda function]]
+- [[#5. Upload another WebM audio file]]
+- [[#6. Optimize the Lambda function]]
 
 ### 1. Create and publish FFmpeg Lambda Layer
 
@@ -533,7 +533,7 @@ sls deploy --region eu-west-1 --stage prod
 
 When Serverless finishes deploying, navigate to the Lambda service in the AWS web console and click on "Layers". Here you should see the published layer. Click on it and take note of the ARN. We'll need it in the next step.
 
-![[attachments/audio-transcoding-lambda/published-layer.png]]
+![[_assets/Audio transcoding/Published layer.png]]
 
 ### 2. Update the Serverless manifest
 
@@ -775,7 +775,7 @@ Lets find out why this is happening by checking the Lambda function's log files 
 
 Here you should see the logs of the Lambda function.
 
-![[attachments/audio-transcoding-lambda/logs-timeout.png]]
+![[_assets/Audio transcoding/Logs timeout.png]]
 
 The logs tell us that FFmpeg is executing (hooray!) but that it doesn't complete (boo!).
 
@@ -799,7 +799,7 @@ functions:
 
 Deploy again. When Serverless is done, upload another WebM audio file, and check the logs.
 
-![[attachments/audio-transcoding-lambda/logs-complete.png]]
+![[_assets/Audio transcoding/Logs complete.png]]
 
 This time we see FFmpeg completes the transcoding process and that the Lambda had a duration of `7221.95 ms`. If we check the output bucket now, we'll see the MP3 file!
 
@@ -821,7 +821,7 @@ functions:
 
 Deploy again. And when Serverless is done, upload another WebM audio file and check the logs.
 
-![[attachments/audio-transcoding-lambda/logs-double-memory.png]]
+![[_assets/Audio transcoding/Logs double memory.png]]
 
 Great, it's even faster now! Does this mean we can just keep increasing the memory and reap the benefits? Sadly, no. There's a tipping point where increasing the memory wont make it run faster.
 

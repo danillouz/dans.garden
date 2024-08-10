@@ -101,7 +101,7 @@ When the Account API receives a request with the bearer token, it will have to v
 
 [^3]: The "Identifier" doesn't have to be a "real" endpoint.
 
-![[attachments/serverless-auth/auth0/register.png]]
+![[_assets/Serverless auth/Auth0/register.png]]
 
 ### Lambda Authorizer configuration
 
@@ -109,7 +109,7 @@ Now that our API is registered, we need to take note of the following (public) p
 
 - Token issuer: this is basically your Auth0 tenant. It always has the format `https://TENANT_NAME.REGION.auth0.com`. For example `https://danillouz.eu.auth0.com`.
 - JWKS URI: this returns a [JSON Web Key Set](https://auth0.com/docs/jwks) (JWKS). The URI will be used by the Lambda Authorizer to fetch a public key from Auth0 and verify a token (more on that later). It always has the format `https://TENANT_NAME.REGION.auth0.com/.well-known/jwks.json`. For example `https://danillouz.eu.auth0.com/.well-known/jwks.json`.
-- Audience: this is the "Identifier" you provided during step 3 of [registering the API with Auth0](#registering-the-api-with-auth0). For example `https://api.danillouz.dev/account`.
+- Audience: this is the "Identifier" you provided during step 3 of [[#Registering the API with Auth0]]. For example `https://api.danillouz.dev/account`.
 
 You can also find these values under the "Quick Start" tab of the API details screen (you were redirected there after registering the API). For example, click on the "Node.js" tab and look for these properties:
 
@@ -117,7 +117,7 @@ You can also find these values under the "Quick Start" tab of the API details sc
 - `jwksUri`
 - `audience`
 
-![[attachments/serverless-auth/auth0/quick-start.png]]
+![[_assets/Serverless auth/Auth0/Quick start.png]]
 
 ## What's a Lambda Authorizer?
 
@@ -146,7 +146,7 @@ When a Lambda Authorizer is configured, and a client makes a request to APIG, AW
 2. Verifying the token signature with the fetched public key.
 3. Verifying the token has the correct issuer and audience claims.
 
-[^4]: We get the JWKS URI, issuer and audience values from the [Lambda Authorizer configuration](#lambda-authorizer-configuration).
+[^4]: We get the JWKS URI, issuer and audience values from the [[#Lambda Authorizer configuration]].
 
 Only when the token passes these checks should the Lambda Authorizer return an [IAM Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) document with `"Effect"` set to `"Allow"`:
 
@@ -201,7 +201,7 @@ When using OAuth 2.0, scopes can be used to apply authorization logic. In our ca
 
 You can configure scope in the Auth0 dashboard by adding permissions to the registered API. Navigate to the "Permissions" tab of the API details screen and add `get:profile` as a scope.
 
-![[attachments/serverless-auth/auth0/api-permissions.png]]
+![[_assets/Serverless auth/Auth0/API permissions.png]]
 
 We'll use this scope when implementing the Account API. And you can read more about scopes in the Auth0 [docs](https://auth0.com/docs/scopes/current).
 
@@ -271,7 +271,7 @@ To summarize, we need the following components to protect our API:
 
 We can visualize how these components will interact with each other like this.
 
-![[attachments/serverless-auth/auth-flow.png]]
+![[_assets/Serverless auth/Auth flow.png]]
 
 1. `curl` will send an HTTP request to the `GET /profile` endpoint with a token via the `Authorization` request header.
 
@@ -296,13 +296,13 @@ Now for the easy part, writing the code!
 
 We'll do this by:
 
-1. [Setting up the project](#1-setting-up-the-project)
-2. [Configuring a Serverless manifest](#2-configuring-a-serverless-manifest)
-3. [Defining the Lambda Authorizer](#3-defining-the-lambda-authorizer)
-4. [Getting the token](#4-getting-the-token)
-5. [Verifying the token](#5-verifying-the-token)
-6. [Creating the auth response](#6-creating-the-auth-response)
-7. [Releasing the Lambda Authorizer](#7-releasing-the-lambda-authorizer)
+- [[#1. Setting up the project]]
+- [[#2. Configuring a Serverless manifest]]
+- [[#3. Defining the Lambda Authorizer]]
+- [[#4. Getting the token]]
+- [[#5. Verifying the token]]
+- [[#6. Creating the auth response]]
+- [[#7. Releasing the Lambda Authorizer]]
 
 ### 1. Setting up the project
 
@@ -356,7 +356,7 @@ package:
     - src
 ```
 
-Add the properties we got from the [Lambda Authorizer configuration](#lambda-authorizer-configuration) as environment variables. For example:
+Add the properties we got from the [[#Lambda Authorizer configuration]] as environment variables. For example:
 
 ```yaml title="lambda-authorizers/serverless.yaml" showLineNumbers{10-13}
 service: lambda-authorizers
@@ -460,7 +460,7 @@ module.exports = function getToken(event) {
 }
 ```
 
-Here we're only interested in `TOKEN` events because we're implementing a [token based authorizer](#whats-a-lambda-authorizer). And we can access the value of the `Authorization` request header via the `event.authorizationToken` property.
+Here we're only interested in `TOKEN` events because we're implementing a [[#What's a Lambda Authorizer?|token based authorizer]]. And we can access the value of the `Authorization` request header via the `event.authorizationToken` property.
 
 Then `require` and call the helper in the Lambda with the APIG HTTP input [event](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format) as an argument:
 
@@ -727,7 +727,7 @@ In this case the test application represents a "machine" and _not_ a user. But t
 
 You can find the test application in the Auth0 dashboard by navigating to "Applications" and selecting "Account API (Test Application)".
 
-![[attachments/serverless-auth/auth0/test-application.png]]
+![[_assets/Serverless auth/Auth0/Test application.png]]
 
 #### Method ARN
 
@@ -735,15 +735,15 @@ The [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.
 
 #### Granting a client scopes
 
-Like mentioned when discussing [scopes](#scopes), Auth0 can provide scopes as authorization information. In order for Auth0 to do this, we need to "grant" our client the `get:profile` scope. In our case, the client is the "Test Application" that has been created for us.
+Like mentioned when discussing [[#Scopes]], Auth0 can provide scopes as authorization information. In order for Auth0 to do this, we need to "grant" our client the `get:profile` scope. In our case, the client is the "Test Application" that has been created for us.
 
 Navigate to the "APIs" tab in the "Test Application" details and click on the "right pointing chevron" (circled in red) to the right of "Account API".
 
-![[attachments/serverless-auth/auth0/grant-scope-1.png]]
+![[_assets/Serverless auth/Auth0/Grant scope 1.png]]
 
 Then check the `get:profile` scope, click "Update" and click "Continue".
 
-![[attachments/serverless-auth/auth0/grant-scope-2.png]]
+![[_assets/Serverless auth/Auth0/Grant scope 2.png]]
 
 Now the configured scope will be a claim on issued test tokens, and part of the `verifiedData`:
 
@@ -873,7 +873,7 @@ layers:
 
 Now go to the AWS Console and visit the "Lambda" service. Find `lambda-authorizers-prod-auth0VerifyBearer` under "Functions" and take note of the ARN in the top right corner.
 
-![[attachments/serverless-auth/aws/lambda-authorizer-arn.png]]
+![[_assets/Serverless auth/AWS/Lambda authorizer ARN.png]]
 
 We'll need this to configure the Account API in the next part.
 
@@ -881,14 +881,14 @@ We'll need this to configure the Account API in the next part.
 
 We'll do this by:
 
-1. [Setting up the API project](#1-setting-up-the-api-project)
-2. [Configuring the Serverless manifest](#2-configuring-the-serverless-manifest)
-3. [Defining the Lambda handler](#3-defining-the-lambda-handler)
-4. [Releasing the API](#4-releasing-the-api)
-5. [Configuring the Lambda Authorizer](#5-configuring-the-lambda-authorizer)
-6. [Adding authorization logic](#6-adding-authorization-logic)
-7. [Releasing the API with auth enabled](#7-releasing-the-api-with-auth-enabled)
-8. [Getting a test token](#8-getting-a-test-token)
+- [[#1. Setting up the API project]]
+- [[#2. Configuring the Serverless manifest]]
+- [[#3. Defining the Lambda handler]]
+- [[#4. Releasing the API]]
+- [[#5. Configuring the Lambda Authorizer]]
+- [[#6. Adding authorization logic]]
+- [[#7. Releasing the API with auth enabled]]
+- [[#8. Getting a test token]]
 
 ### 1. Setting up the API project
 
@@ -1107,7 +1107,7 @@ functions:
 
 Let's go over the `authorizer` properties:
 
-- `arn`: must be the value of the Lambda Authorizer ARN we [released](#finding-the-arn) before.
+- `arn`: must be the value of the Lambda Authorizer ARN we [[#Finding the ARN|released]] before.
 - `resultTtlInSeconds`: used to cache the IAM Policy document returned from the Lambda Authorizer[^6].
 - `identitySource`: where APIG should "look" for the bearer token.
 - `identityValidationExpression`: the expression used to extract the token from the `identitySource`.
@@ -1165,7 +1165,7 @@ Note that the `authorizer.scope` is a string and that it may contain more than o
 
 Do another release by running `npm run release`. And after Serverless finishes, go to the AWS Console and visit the "API Gateway" service. Navigate to "prod-account-api" and click on the "GET" resource under "/profile". You should now see that the "Method Request" tile has a property "Auth" set to `auth0VerifyBearer`.
 
-![[attachments/serverless-auth/aws/lambda-authorizer-arn.png]]
+![[_assets/Serverless auth/AWS/Lambda authorizer ARN.png]]
 
 This means our `GET /profile` endpoint is properly configured with a Lambda Authorizer. And we now require a bearer token to get the profile data. Let's verify this by making the same `curl` request like before (without a token):
 
@@ -1188,7 +1188,7 @@ Content-Type: application/json
 
 We can get a test token from the Auth0 dashboard by navigating to the "Test" tab in the API details screen.
 
-![[attachments/serverless-auth/auth0/test.png]]
+![[_assets/Serverless auth/Auth0/Test.png]]
 
 If you scroll to the bottom, you'll see a `curl` command displayed with a ready to use test token:
 

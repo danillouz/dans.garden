@@ -31,8 +31,8 @@ export const defaultContentPageLayout: PageLayout = {
         limit: 3,
         showTags: false,
         filter: (f) => {
-          const isIndexPage = f.filePath?.endsWith("/index.md")
-          const isTag = f.filePath?.startsWith("content/tags/")
+          const isIndexPage = f.filePath?.toLowerCase().endsWith("/index.md")
+          const isTag = f.filePath?.toLowerCase().startsWith("content/tags/")
           return !isIndexPage && !isTag
         },
       }),

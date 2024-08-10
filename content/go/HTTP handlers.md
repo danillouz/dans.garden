@@ -25,7 +25,7 @@ The `net/http` package exposes the [http.Handler](https://pkg.go.dev/net/http#Ha
 
 ```go
 type Handler interface {
-	ServeHTTP(ResponseWriter, *Request)
+  ServeHTTP(ResponseWriter, *Request)
 }
 ```
 

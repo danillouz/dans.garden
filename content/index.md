@@ -2,7 +2,7 @@
 title: Dan's garden
 description: Welcome to my digital garden.
 date: 2024-08-01
-updated: 2024-08-04
+updated: 2024-08-10
 ---
 
 Hi, I'm Dan. Welcome to my digital garden.
@@ -42,4 +42,4 @@ My garden contains work in different stages, and I'm using the following tags to
 
 But because a garden is never finished, work contains **planted** and **last tended** dates to show how long it's been growing.
 
-This garden is built using [Quartz](https://quartz.jzhao.xyz/) and you can find it on my [GitHub](https://github.com/danillouz/dans.garden).
+You can find the code for this garden on my [GitHub](https://github.com/danillouz/dans.garden).
