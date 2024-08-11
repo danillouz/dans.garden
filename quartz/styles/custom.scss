@@ -330,6 +330,25 @@ hr {
 
 //#region Other page(s).
 
+.images {
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 0.5rem;
+  align-items: center;
+
+  &.two {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &.three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &.four {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .page-listing {
   & > p {
     color: var(--tertiary);

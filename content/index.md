@@ -2,8 +2,13 @@
 title: Dan's garden
 description: Welcome to my digital garden.
 date: 2024-08-01
-updated: 2024-08-10
+updated: 2024-08-11
 ---
+
+<div class="images two">
+  <img src="./_assets/Home/Garden.jpeg">
+  <img src="./_assets/Home/Flowers.jpeg">
+</div>
 
 Hi, I'm Dan. Welcome to my digital garden.
 
@@ -16,6 +21,13 @@ Besides coding and airplanes, I also like reading books (especially fantasy), ea
 ## Digital garden?
 
 A digital garden is a way to publish personal knowledge on the web. It sits somewhere between a collection of personal notes (messy, topological) and a personal blog (polished, chronological).
+
+<div class="images four">
+  <img src="./_assets/Home/Page 1.jpeg">
+  <img src="./_assets/Home/Page 2.jpeg">
+  <img src="./_assets/Home/Page 3.jpeg">
+  <img src="./_assets/Home/Page 4.jpeg">
+</div>
 
 The main goal of a digital garden is to collect, grow and evolve ideas over time. It's about making connections, learning in public and having a personal space that reflects your way of thinking. What makes it unique though, is that **a digital garden has unfinished and imperfect work**.
 
@@ -32,6 +44,12 @@ Regarding point 1, I enjoy learning (more) about topics related to software engi
 
 And regarding point 2, I'm curious to try out the more messy and chaotic nature of a digital garden. Because I find that (regularly) posting on a personal blog doesn't really work for me: I end up with a lot of drafts and don't publishing much, because I feel it's not good enough.
 
+<div class="images three">
+  <img src="./_assets/Home/Graphic 1.jpeg">
+  <img src="./_assets/Home/Graphic 2.jpeg">
+  <img src="./_assets/Home/Graphic 3.jpeg">
+</div>
+
 ## How I garden
 
 My garden contains work in different stages, and I'm using the following tags to make the status more clear:
@@ -42,4 +60,5 @@ My garden contains work in different stages, and I'm using the following tags to
 
 But because a garden is never finished, work contains **planted** and **last tended** dates to show how long it's been growing.
 
-You can find the code for this garden on my [GitHub](https://github.com/danillouz/dans.garden).
+> [!info] About this site
+> The color theme is [Rosé Pine](https://rosepinetheme.com/palette/), illustrations (public domain) are from [Public Work](https://public.work/) and the code is on my [GitHub](https://github.com/danillouz/dans.garden).
