@@ -1,0 +1,12 @@
+{
+  "name": "Dan's garden",
+  "short_name": "Dan's garden",
+  "icons": [
+    {
+      "src": "/android-chrome-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone"
+}

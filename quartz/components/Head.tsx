@@ -21,6 +21,10 @@ export default (() => {
         <meta name="description" content={description} />
         <meta name="author" content={cfg.author} />
 
+        {/* Theme. */}
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fffaf3" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2a273f" />
+
         {/* Icons. */}
         <link rel="icon" href={joinSegments(baseDir, "static/icon.png")} />
         <link
@@ -35,6 +39,10 @@ export default (() => {
           sizes="32x32"
           href={joinSegments(baseDir, "static/icon-32.png")}
         />
+        <link rel="apple-touch-icon" sizes="180x180" href="static/apple-180.png" />
+
+        {/* Manifest. */}
+        <link rel="manifest" href="static/manifest.json" />
 
         {/* Sitemap. */}
         {cfg.baseUrl && <link rel="sitemap" href={`https://${cfg.baseUrl}/sitemap.xml`} />}
