@@ -3,37 +3,29 @@
 
 //#region Layout.
 
-#quartz-root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-footer {
-  text-align: center;
-  margin: 2rem auto;
-  opacity: 1;
-
-  @media (min-width: $fullPageWidth) {
-    margin: 0 auto;
-  }
-
-  & > p {
-    color: var(--gray);
-  }
-
-  & > ul {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-  }
-}
-
-//#region Layout left/right sidebar.
-
 .page {
+  @media (max-width: $fullPageWidth) {
+    padding: 0;
+  }
+
   & > #quartz-body {
+    min-height: 100vh;
+
+    & .center {
+      @media (min-width: $fullPageWidth) {
+        border-left: 1px solid var(--lightgray);
+        border-right: 1px solid var(--lightgray);
+      }
+    }
+
+    & .sidebar {
+      padding: 0 1rem;
+
+      @media (min-width: $fullPageWidth) {
+        padding: 0 3rem;
+      }
+    }
+
     & .sidebar.left {
       display: grid;
       gap: 2rem;
@@ -164,7 +156,61 @@ footer {
   }
 }
 
-//#region Article content.
+footer {
+  text-align: center;
+  margin: 2rem auto;
+  opacity: 1;
+
+  @media (min-width: $fullPageWidth) {
+    margin: 0 auto;
+  }
+
+  & > p {
+    color: var(--gray);
+  }
+
+  & > ul {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+// #region Article/Content
+
+.page {
+  & .page-header {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid var(--lightgray);
+
+    & .breadcrumb-container {
+      margin: 0;
+      padding: 1rem;
+
+      @media (min-width: $fullPageWidth) {
+        padding: 1rem 2rem;
+      }
+    }
+  }
+
+  & article {
+    padding: 0 1rem;
+
+    @media (min-width: $fullPageWidth) {
+      padding: 0 2rem;
+    }
+  }
+
+  & article {
+    padding: 0 1rem;
+
+    @media (min-width: $fullPageWidth) {
+      padding: 0 2rem;
+    }
+  }
+}
 
 .meta {
   color: var(--gray);
@@ -185,7 +231,7 @@ ul,
   text-wrap: wrap;
 }
 
-//#region Article callouts.
+//#region Article/Content callouts.
 
 :root[saved-theme="light"] {
   .callout {
@@ -254,7 +300,7 @@ ul,
   }
 }
 
-//#region Article code blocks.
+//#region Article/Content code blocks.
 
 figure[data-rehype-pretty-code-figure] {
   & > [data-rehype-pretty-code-title] {
@@ -310,7 +356,7 @@ pre {
   }
 }
 
-//#region Article divider.
+//#region Article/Content divider.
 
 hr {
   font-family: var(--codeFont);
@@ -328,7 +374,7 @@ hr {
   }
 }
 
-//#region Other page(s).
+//#region Homepage.
 
 .images {
   display: grid;
@@ -347,15 +393,60 @@ hr {
   &.four {
     grid-template-columns: repeat(4, 1fr);
   }
-}
 
-.page-listing {
-  & > p {
-    color: var(--tertiary);
+  & img {
+    margin: 0;
   }
 }
 
-// From: listPage.scss
+//#region Folder/Tag pages.
+
+.page-listing-section {
+  padding: 1rem 0;
+}
+
+.article-header,
+.page-listing-section {
+  text-align: center;
+  margin: 2rem 0;
+
+  & .article-title {
+    margin: 0.5rem 0;
+  }
+
+  & h1.article-title {
+    font-size: 2.25rem;
+  }
+
+  & h2.article-title {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+  }
+
+  & .article-description {
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+
+  & .content-meta {
+    margin: 0.5rem 0;
+  }
+
+  & .tags {
+    justify-content: center;
+  }
+}
+
+.page-listing {
+  text-align: left;
+  padding: 0 1rem;
+
+  @media (min-width: $fullPageWidth) {
+    padding: 0 2rem;
+  }
+}
+
+// From `listPage.scss`.
 li.section-li {
   & > .section {
     display: grid;
@@ -372,11 +463,13 @@ li.section-li {
   }
 }
 
+//#region 404 page.
+
 .not-found-page {
   text-align: center;
 }
 
-//#region misc.
+//#region Misc.
 
 .popover {
   & > .popover-inner {

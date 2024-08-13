@@ -4,6 +4,7 @@ import Backlinks from "./Backlinks"
 import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 import ContentMeta from "./ContentMeta"
+import ContentReadingTime from "./ContentReadingTime"
 import Darkmode from "./Darkmode"
 import DesktopOnly from "./DesktopOnly"
 import Explorer from "./Explorer"
@@ -30,6 +31,7 @@ export {
   Comments,
   Content,
   ContentMeta,
+  ContentReadingTime,
   Darkmode,
   DesktopOnly,
   Explorer,

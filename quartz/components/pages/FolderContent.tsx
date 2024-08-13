@@ -1,17 +1,17 @@
-import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../types"
-import path from "path"
-
-import style from "../styles/listPage.scss"
-import { PageList, SortFn } from "../PageList"
-import { stripSlashes, simplifySlug } from "../../util/path"
 import { Root } from "hast"
-import { htmlToJsx } from "../../util/jsx"
+import path from "path"
 import { i18n } from "../../i18n"
+import { htmlToJsx } from "../../util/jsx"
+import { simplifySlug, stripSlashes } from "../../util/path"
+import { PageList, SortFn } from "../PageList"
+import style from "../styles/listPage.scss"
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../types"
+
+import ArticleTitle from "../ArticleTitle"
+
+const Title = ArticleTitle()
 
 interface FolderContentOptions {
-  /**
-   * Whether to display number of folders
-   */
   showFolderCount: boolean
   sort?: SortFn
 }
@@ -41,31 +41,33 @@ export default ((opts?: Partial<FolderContentOptions>) => {
       sort: options.sort,
       allFiles: allPagesInFolder,
     }
-
     const content =
-      (tree as Root).children.length === 0
-        ? fileData.description
-        : htmlToJsx(fileData.filePath!, tree)
-
+      (tree as Root).children.length === 0 ? null : htmlToJsx(fileData.filePath!, tree)
     return (
       <div class={classes}>
-        <article>{content}</article>
-        <div class="page-listing">
-          {options.showFolderCount && (
-            <p>
-              {i18n(cfg.locale).pages.folderContent.itemsUnderFolder({
-                count: allPagesInFolder.length,
-              })}
-            </p>
-          )}
-          <div>
-            <PageList {...listProps} />
+        <article>
+          <div class="article-header">
+            {options.showFolderCount && (
+              <p class="content-meta">
+                {i18n(cfg.locale).pages.folderContent.itemsUnderFolder({
+                  count: allPagesInFolder.length,
+                })}
+              </p>
+            )}
+
+            <Title {...props} />
           </div>
+
+          {content}
+        </article>
+
+        <div class="page-listing">
+          <PageList {...listProps} />
         </div>
       </div>
     )
   }
 
-  FolderContent.css = style + PageList.css
+  FolderContent.css = style + PageList.css + Title.css
   return FolderContent
 }) satisfies QuartzComponentConstructor

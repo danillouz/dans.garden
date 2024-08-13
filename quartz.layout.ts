@@ -18,9 +18,6 @@ export const defaultContentPageLayout: PageLayout = {
       spacerSymbol: "/",
       hideOnRoot: false,
     }),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
-    Component.TagList(),
   ],
   left: [
     Component.MobileOnly(Component.Spacer()),
@@ -59,8 +56,6 @@ export const defaultListPageLayout: PageLayout = {
       spacerSymbol: "/",
       hideOnRoot: false,
     }),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
   ],
   left: [
     Component.MobileOnly(Component.Spacer()),

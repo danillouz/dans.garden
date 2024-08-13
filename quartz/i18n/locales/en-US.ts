@@ -71,15 +71,13 @@ export default {
     },
     folderContent: {
       folder: "Folder",
-      itemsUnderFolder: ({ count }) =>
-        count === 1 ? "1 item in this folder." : `${count} items in this folder.`,
+      itemsUnderFolder: ({ count }) => (count === 1 ? "1 item" : `${count} items`),
     },
     tagContent: {
       tagIndex: "Tags",
-      itemsUnderTag: ({ count }) =>
-        count === 1 ? "1 item with this tag." : `${count} items with this tag.`,
-      showingFirst: ({ count }) => `Showing first ${count} tags.`,
-      totalTags: ({ count }) => `Found ${count} total tags.`,
+      itemsUnderTag: ({ count }) => (count === 1 ? "1 item" : `${count} items`),
+      showingFirst: ({ count, total }) => `showing ${count} of ${total} items`,
+      totalTags: ({ count }) => `${count} unique tags`,
     },
   },
 } as const satisfies Translation

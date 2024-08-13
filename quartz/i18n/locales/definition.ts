@@ -78,7 +78,7 @@ export interface Translation {
     tagContent: {
       tagIndex: string
       itemsUnderTag: (variables: { count: number }) => string
-      showingFirst: (variables: { count: number }) => string
+      showingFirst: (variables: { count: number; total: number }) => string
       totalTags: (variables: { count: number }) => string
     }
   }
