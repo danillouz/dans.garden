@@ -40,6 +40,10 @@
       & .darkmode {
         grid-area: 1 / 2 / 1 / 2;
         margin: 0;
+
+        & svg {
+          fill: var(--gray);
+        }
       }
 
       @media (min-width: 640px) {
@@ -102,6 +106,21 @@
 
   @media (min-width: $fullPageWidth) {
     max-width: none;
+  }
+
+  & > .search-button {
+    color: var(--gray);
+    background-color: var(--light);
+    border: 1px solid var(--lightgray);
+
+    & p {
+      color: var(--gray);
+      font-family: var(--bodyFont);
+    }
+
+    & svg .search-path {
+      stroke: var(--gray);
+    }
   }
 
   & > #search-container {
