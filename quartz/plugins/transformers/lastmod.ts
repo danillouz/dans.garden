@@ -31,9 +31,7 @@ function coerceDate(fp: string, d: any, coerce: boolean): Date | undefined {
 }
 
 type MaybeDate = undefined | string | number
-export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options> | undefined> = (
-  userOpts,
-) => {
+export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (userOpts) => {
   const opts = { ...defaultOptions, ...userOpts }
   return {
     name: "CreatedModifiedDate",

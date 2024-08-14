@@ -5,18 +5,18 @@
   max-width: 14rem;
   flex-grow: 0.3;
 
-  & > #search-icon {
+  & > .search-button {
     background-color: var(--lightgray);
     border-radius: var(--borderRadius);
     height: 2rem;
+    padding: 0;
     display: flex;
     align-items: center;
+    text-align: inherit;
     cursor: pointer;
     white-space: nowrap;
-
-    & > div {
-      flex-grow: 1;
-    }
+    width: 100%;
+    justify-content: space-between;
 
     & > p {
       display: inline;
