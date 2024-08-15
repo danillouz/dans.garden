@@ -72,7 +72,6 @@ export interface Translation {
       home: string
     }
     folderContent: {
-      folder: string
       itemsUnderFolder: (variables: { count: number }) => string
     }
     tagContent: {

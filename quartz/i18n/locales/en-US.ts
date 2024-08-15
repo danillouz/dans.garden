@@ -70,7 +70,6 @@ export default {
       home: "Back Home",
     },
     folderContent: {
-      folder: "Folder",
       itemsUnderFolder: ({ count }) => (count === 1 ? "1 item" : `${count} items`),
     },
     tagContent: {
