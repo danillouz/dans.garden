@@ -1,6 +1,76 @@
 @use "./variables.scss" as *;
 @use "./base.scss";
 
+//#region Font overrides.
+
+.search-button {
+  & p {
+    font-family: var(--headerFont);
+    font-size: 0.9rem;
+  }
+}
+
+.search > #search-container > #search-space > input {
+  font-family: var(--headerFont);
+}
+
+.explorer .folder-title {
+  font-family: var(--bodyFont);
+  font-weight: normal;
+}
+
+.backlinks li {
+  font-family: var(--headerFont);
+}
+
+.graph text {
+  font-family: var(--headerFont);
+}
+
+.breadcrumb-element a {
+  font-family: var(--headerFont);
+  font-weight: normal;
+}
+
+.meta,
+.content-meta {
+  font-family: var(--headerFont);
+}
+
+.page-listing h3 {
+  font-family: var(--bodyFont);
+  font-size: 1rem;
+}
+
+.tag-link {
+  font-family: var(--headerFont);
+  font-weight: normal;
+}
+
+.article-title {
+  font-family: var(--bodyFont);
+}
+
+article {
+  & h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  thead {
+    font-family: var(--bodyFont);
+  }
+
+  & .callout {
+    font-family: var(--headerFont);
+  }
+}
+
+a {
+  font-weight: normal;
+}
+
 //#region Layout.
 
 .page {
@@ -115,7 +185,6 @@
 
     & p {
       color: var(--gray);
-      font-family: var(--bodyFont);
     }
 
     & svg .search-path {
@@ -211,6 +280,10 @@ footer {
       @media (min-width: $fullPageWidth) {
         padding: 1rem 2rem;
       }
+    }
+
+    & .breadcrumb-element p {
+      color: var(--gray);
     }
   }
 

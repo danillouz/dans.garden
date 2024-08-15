@@ -22,8 +22,8 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Merriweather",
-        body: "Open Sans",
+        header: "Open Sans",
+        body: "Merriweather",
         code: "Fira Code",
       },
 
