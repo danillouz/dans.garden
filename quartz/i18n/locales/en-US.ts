@@ -22,7 +22,7 @@ export default {
       quote: "Quote",
     },
     backlinks: {
-      title: "Backlinks",
+      title: "Linking to this page",
       noBacklinksFound: "No backlinks.",
     },
     themeToggle: {
@@ -36,7 +36,7 @@ export default {
       createdWith: "Built with",
     },
     graph: {
-      title: "Graph View",
+      title: "Garden view",
     },
     recentNotes: {
       title: "Recent",
@@ -51,7 +51,7 @@ export default {
       searchBarPlaceholder: "Search Dan's garden..",
     },
     tableOfContents: {
-      title: "Table of Contents",
+      title: "On this page",
     },
     contentMeta: {
       createdAt: "Planted",
@@ -61,7 +61,7 @@ export default {
   },
   pages: {
     rss: {
-      title: "Dan's garden feed",
+      title: "Dan's garden",
       description: "Fresh from Dan's garden.",
     },
     error: {

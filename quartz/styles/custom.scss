@@ -51,6 +51,17 @@
   font-family: var(--bodyFont);
 }
 
+.page {
+  & > #quartz-body {
+    & .sidebar {
+      & h3 {
+        text-transform: uppercase;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
 article {
   & h1,
   h2,
