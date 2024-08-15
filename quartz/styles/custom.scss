@@ -54,7 +54,11 @@
 .page {
   & > #quartz-body {
     & .sidebar {
-      & h3 {
+      & .recent-notes > h3,
+      & #explorer > h3,
+      & #toc > h3,
+      & .backlinks > h3,
+      & .graph h3 {
         text-transform: uppercase;
         font-size: 0.9rem;
       }
