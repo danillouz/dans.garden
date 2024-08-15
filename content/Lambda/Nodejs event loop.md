@@ -1,6 +1,6 @@
 ---
 title: Node.js event loop
-description: Lambda can freeze and thaw its execution context, which can impact Node.js event loop behavior.
+description: AWS Lambda can freeze and thaw its execution context, which can impact Node.js event loop behavior.
 date: 2019-05-30
 updated: 2023-02-03
 tags:

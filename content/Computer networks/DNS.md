@@ -1,6 +1,6 @@
 ---
 title: DNS
-description: What I learned about DNS so far.
+description: What I learned about the Domain Name System so far.
 date: 2023-06-03
 updated: 2024-08-06
 aliases:

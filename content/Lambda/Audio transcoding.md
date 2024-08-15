@@ -1,6 +1,6 @@
 ---
 title: Audio transcoding
-description: Transcoding short audio files with Amazon Elastic Transcoder or FFmpeg.
+description: Transcoding short audio files with AWS Lambda, Amazon Elastic Transcoder or FFmpeg.
 date: 2019-10-27
 updated: 2023-02-03
 tags:
