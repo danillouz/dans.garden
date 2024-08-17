@@ -2,18 +2,20 @@
 title: Node.js event loop
 description: AWS Lambda can freeze and thaw its execution context, which can impact Node.js event loop behavior.
 date: 2019-05-30
-updated: 2023-02-03
+updated: 2024-08-17
 tags:
   - evergreen
 ---
 
 One of the more surprising things I learned recently while working with AWS Lambda is how it interacts with the Node.js event loop.
 
-Lambda is powered by a [virtualization technology](https://aws.amazon.com/blogs/aws/firecracker-lightweight-virtualization-for-serverless-computing). And to optimize performance it can freeze and thaw the execution context of your code so it can be reused.
+Lambda is powered by a [virtualization technology](https://aws.amazon.com/blogs/aws/firecracker-lightweight-virtualization-for-serverless-computing). And to optimize performance it can "freeze" and "thaw" the execution context of your code so it can be reused.
 
-This will make your code run faster, but can impact the "expected" event loop behavior. We'll explore this in detail. But before we dive in, lets quickly refresh the Node.js concurrency model.
+This will make code run faster, but can impact the expected event loop behavior. We'll explore this in detail. But lets quickly refresh the Node.js concurrency model.
 
-If you're already familiar with the event loop, you can jump straight to the [[#AWS Lambda]] section.
+> [!note] Already familiar with the event loop?
+>
+> Go straight to the [[#AWS Lambda]] section.
 
 ## Concurrency model
 
@@ -635,12 +637,13 @@ When we run our code with this change, all is well now.
 
 ![[_assets/Nodejs event loop/Console/3.png]]
 
-## In closing
+## Macrotasks and microtasks
 
-I intentionally left out some details about the the task queue. There are actually _two_ task queues! One for _macrotasks_ (e.g. `setTimeout`) and one for _microtasks_ (e.g. `Promise`).
+I intentionally left out some details about the the task queue. There are actually _two_ task queues. One for _macrotasks_ (e.g. `setTimeout`) and one for _microtasks_ (e.g. `Promise`).
 
 According to the [spec](https://html.spec.whatwg.org/multipage/webappapis.html#task-queue), one macrotask should get processed per tick. And after it finishes, all microtasks will be processed within the same tick. While these microtasks are processed they can enqueue more microtasks, **which will all be executed in the same tick**.
 
 For more information see [this article from RisingStack](https://blog.risingstack.com/node-js-at-scale-understanding-node-js-event-loop) where they go more into detail.
 
-This post was originally published on [Medium](https://medium.com/radient-tech-blog/aws-lambda-and-the-node-js-event-loop-864e48fba49).
+> [!note]
+> This page was originally published on [Medium](https://medium.com/radient-tech-blog/aws-lambda-and-the-node-js-event-loop-864e48fba49).

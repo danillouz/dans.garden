@@ -2,16 +2,16 @@
 title: DNS
 description: What I learned about the Domain Name System so far.
 date: 2023-06-03
-updated: 2024-08-06
+updated: 2024-08-17
 aliases:
   - The Domain Name System
 tags:
   - evergreen
 ---
 
-My understanding of DNS was always pretty basic. But since I started working more with hosting infrastructure, I've learned a lot more about it. I think DNS is really cool, but it is complicated. DNS has a lot of moving parts and terminology you need to know about to really get it. So I decided to write a bit about this. Mostly to capture and solidify my learnings, but maybe it can also be useful to others.
+My understanding of DNS was always pretty basic. But since I started working more with hosting infrastructure, I've learned a lot more about it.
 
-In this post I'll cover what problem DNS solves, what DNS is, and how DNS works when you visit a website in your browser. This post gets a bit technical at times, but I try not to assume any prior knowledge, so you can (hopefully) also follow along if you're new to the topic.
+I think DNS is really cool, but it _is_ complicated. There are a lot of moving parts and terminology you need to know about to understand it. So I decided to write a bit about this. Mostly to capture and solidify my learnings, but maybe it can also be useful to others.
 
 ## Why do we need DNS?
 
@@ -30,7 +30,7 @@ But if one of these rules is broken (e.g. because phone numbers were used for ru
 
 It's a bit like that on the internet, but the protocol that's used is called the **Internet Protocol** (IP). And instead of using mail addresses to deliver mail to the correct destination, **IP addresses** must be used to deliver packets of data to the correct destination[^1].
 
-[^1]: The IP protocol is basically the addressing system of the internet, but there's more needed to deliver packets from source to destination. The exact details are out of scope for this post, but there's also a transport protocol needed to define rules _how_ data is sent and received. Ultimately there are multiple protocols needed which are "layered" on top of each other, like [TCP/IP](https://en.wikipedia.org/wiki/Internet_protocol_suite).
+[^1]: The IP protocol is basically the addressing system of the internet, but there's more needed to deliver packets from source to destination. The exact details are out of scope for this page, but there's also a transport protocol needed to define rules _how_ data is sent and received. Ultimately there are multiple protocols needed which are "layered" on top of each other, like [TCP/IP](https://en.wikipedia.org/wiki/Internet_protocol_suite).
 
 IP addresses are unique identifiers. For example, if a device wants to visit this website it must (at the time of this writing) go to the IP address `76.76.21.21`[^2].
 
@@ -112,7 +112,7 @@ For example, for the domain name `www.bbc.co.uk`:
 
 Each label in the domain name space will usually have some information associated with it (e.g. an IP address). This information is stored in text files called **resource records** (usually called DNS records), and DNS servers that store resource records are called **name servers**.
 
-There are different kind of resource records, and I won't cover all of them in this post, but 3 important ones are:
+There are different kind of resource records, and I won't cover all of them on this page, but 3 important ones are:
 
 - **NS records** store the name server of a domain name.
 - **A records** store the IPv4 address of a domain name.
@@ -146,6 +146,7 @@ There are 4 different kind of servers needed to make DNS work:
 [^7]: But you can change this in the network settings of your operating system and use a different resolver, like Cloudflare's [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/) or Google's [8.8.8.8](https://developers.google.com/speed/public-dns/docs/using).
 
 > [!note] About authoritative name servers
+>
 > I used to be really confused about what authoritative name servers are, and how they differ from other name servers.
 >
 > But an authoritative name server is just the name server that "knows" the information being queried by a resolver. So it actually depends on the query type which name server is authoritative.
@@ -166,6 +167,7 @@ The following occurs when a browser uses DNS to look up the IP address of a doma
 6. The browser can now make an HTTP request to the IP address and fetch the website.
 
 > [!info] The steps above are for uncached queries
+>
 > Since there can be a lot steps needed to look up information for a domain name, resolvers will cache the results of queries.
 >
 > For example, when a query is made for a domain name that was recently looked up, the resolver can skip (some of) the steps above and return the cached result(s) immediately.
@@ -204,15 +206,9 @@ Registries allow registrars to partner with them by entering a **Registry-Regist
 
 [^11]: The registrar must pay fees every time a domain name is registered, renewed or transferred. There's the registry fee (as defined in the Registry-Registrant Agreement). And the `$0.18` ICANN fee. But there might also be other fees, like a [yearly fee of $4000](https://www.icann.org/resources/pages/registrar-fees-2018-08-10-en) when the registry is ICANN accredited.
 
-## In closing
-
-That's it for now! Everything covered in this post is pretty theoretical, and one way to see DNS in action is to query resource records with [dig](<https://en.wikipedia.org/wiki/Dig_(command)>). But I'll save that for another post.
-
-By the way, these are some resources I used to learn more about DNS:
+## Resources
 
 - [RFC 1034: Domain names concepts and facilities](https://datatracker.ietf.org/doc/rfc1034/)
 - [RFC 8499: DNS Terminology](https://datatracker.ietf.org/doc/rfc8499/)
 - [What is DNS?](https://www.cloudflare.com/learning/dns/what-is-dns/)
-- [What does ICANN do?](https://www.icann.org/resources/pages/what-2012-02-25-en)
-
-(and let me know if you have any good ones to add!)
+- [What does ICANN do?](https://www.icann.org/resources/pages/what-2012-02-25-en/)

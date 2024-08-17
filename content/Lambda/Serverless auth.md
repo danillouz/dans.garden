@@ -2,7 +2,7 @@
 title: Serverless auth
 description: Protecting AWS API Gateway endpoints with AWS Lambda and Auth0.
 date: 2019-06-19
-updated: 2023-02-03
+updated: 2024-08-17
 tags:
   - evergreen
 ---
@@ -11,9 +11,11 @@ Auth is complicated. It can be difficult to reason about and can be hard to work
 
 On top of that it can also be challenging to know when to use what. Depending on what you're building and for whom, different auth protocols and strategies might be more suitable or required.
 
-In this post I won't be exploring these protocols and strategies in depth. Instead, I want to show that implementing something as complex as auth doesn't have to be too difficult. In order to do that I'll focus on a specific (but common) use case, and show a way to implement it.
+This page does not explore these protocols and strategies in depth. Instead, I want to show that implementing something as complex as auth doesn't have to be too difficult. In order to do that I'll focus on a specific (but common) use case, and show a way to implement it.
 
-If you just want to read the code, have a look at [github.com/danillouz/serverless-auth](https://github.com/danillouz/serverless-auth).
+> [!note] Just want to read the code?
+>
+> See [github.com/danillouz/serverless-auth](https://github.com/danillouz/serverless-auth).
 
 ## Use case and technologies
 
@@ -1295,9 +1297,3 @@ resources:
 ```
 
 When the Lambda Authorizer throws an error or returns a "Deny" policy, APIG will _not_ execute any Lambda handlers. This means that the CORS settings you added to the Lambda handler wont be applied. That's why we must define additional APIG response resources, to make sure we always return the proper CORS headers.
-
-## In closing
-
-In this post I showed a way to implement "serverless auth" using a machine client. But you can use something like [Auth0 Lock](https://auth0.com/lock) and implement a user centric auth flow. This would allow users to sign up and log in to (for example) a web app, and get a token from Auth0. The web app can then use the token to send requests (on behalf of a user) to a protected API.
-
-You can find all code at [github.com/danillouz/serverless-auth](https://github.com/danillouz/serverless-auth).

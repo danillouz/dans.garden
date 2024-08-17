@@ -2,7 +2,7 @@
 title: Dan's garden
 description: Welcome to my digital garden.
 date: 2024-08-01
-updated: 2024-08-15
+updated: 2024-08-17
 ---
 
 <div class="images two">
@@ -12,7 +12,7 @@ updated: 2024-08-15
 
 Hi, I'm Dan. I'm a self-taught software developer from the Netherlands. My background is in aviation, but I decided to make a career switch from commercial pilot to developer in 2012. I currently work at [Framer](https://www.framer.com/) as a backend engineer, where I help build and scale the global hosting backend and infrastructure.
 
-Besides coding and airplanes, I also like reading books (especially fantasy), eating delicious pastries, salsa dancing (I'm not very good, but it helps burn off all those pastries) and riding my bike (I mean bicycle, but bike sounds cooler).
+Besides coding and airplanes, I also like reading books (especially fantasy), eating delicious pastries, salsa dancing (I'm not very good, but it helps burn off some of those pastries) and riding my bike (I mean bicycle, but bike sounds cooler).
 
 ## Digital garden?
 
@@ -48,13 +48,17 @@ And regarding point 2, I'm curious to try out the more messy and chaotic nature 
 
 ## How I garden
 
-My garden contains work in different stages, and I'm using the following tags to make the status more clear:
+My garden contains work in different stages, and I'm using the following tags to make the status of a page more clear:
 
 - [[tags/seedling]] for work that's (very) rough and early stage.
 - [[tags/sapling]] for work that's starting to take shape, but is not complete yet.
 - [[tags/evergreen]] for work I feel is reasonably complete.
 
-But because a garden is never finished, work contains **planted** and **last tended** dates to show how long it's been growing.
+But because a garden is never finished, each page contains **planted** and **last tended** dates to show how long it's been growing.
 
 > [!info] About this site
-> The color theme is [Rosé Pine](https://rosepinetheme.com/palette/), illustrations (public domain) are from [Public Work](https://public.work/) and the code is on my [GitHub](https://github.com/danillouz/dans.garden).
+>
+> - Built with [Quartz](https://quartz.jzhao.xyz/).
+> - Color theme is [Rosé Pine](https://rosepinetheme.com/palette/).
+> - Illustrations (public domain) from [Public Work](https://public.work/).
+> - All code can be found on my [GitHub](https://github.com/danillouz/dans.garden).

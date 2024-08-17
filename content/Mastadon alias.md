@@ -256,21 +256,22 @@ For example, these all work:
 - `737@danillouz.dev`
 - `lol@danillouz.dev`
 
-## In closing
+## RSS and JSON
 
-It was fun to learn a bit more about Mastodon's internals. And while searching around how Mastodon uses WebFinger, I saw others had the same idea to alias their handle. Like [Maarten Balliauw](https://blog.maartenballiauw.be/post/2022/11/05/mastodon-own-donain-without-hosting-server.html) and [Lindsay Wardell](https://www.lindsaykwardell.com/blog/integrate-mastodon-with-astro).
+I also learned that you can postfix any account or tag with `.rss`, and Mastodon will give you the RSS feed for it.
 
-I think the latter post is pretty cool, where Lindsay is fetching Mastodon posts via RSS to show them on their site. I learned that you can postfix any account or tag with `.rss`, and Mastodon will give you the RSS feed for it! This reminded me of the Reddit API. So I tried postfixing with `.json`, and that also works[^5].
-
-For example:
+This reminded me of the Reddit API. So I tried postfixing with `.json`, and that also works[^5].
 
 [^5]: But as far as I can tell, you won't get the posts in JSON for an account.
+
+For example:
 
 - [https://mastodon.social/@Mastodon.rss](https://mastodon.social/@Mastodon.rss)
 - [https://mastodon.social/tags/introduction.rss](https://mastodon.social/tags/introduction.rss)
 - [https://mastodon.social/@Mastodon.json](https://mastodon.social/@Mastodon.json)
 - [https://mastodon.social/tags/introduction.json](https://mastodon.social/tags/introduction.json)
 
-I especially like the RSS feed functionality, since that allows me to subscribe to accounts and tags from my favourite RSS reader[^6]!
+## Resources
 
-[^6]: If you're not familiar with RSS, have a look at [aboutfeeds](https://aboutfeeds.com).
+- [Mastodon on your own domain without hosting a server](https://blog.maartenballiauw.be/post/2022/11/05/mastodon-own-donain-without-hosting-server.html)
+- [Integrating Mastodon with Astro](https://www.lindsaykwardell.com/blog/integrate-mastodon-with-astro)

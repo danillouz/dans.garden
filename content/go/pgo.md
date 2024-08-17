@@ -2,6 +2,7 @@
 title: PGO
 description: Profile-guided optimizations in Go.
 date: 2024-03-30
+updated: 2024-08-17
 aliases:
   - Profile Guided Optimizations
 tags:
@@ -37,8 +38,8 @@ To use a more representative profile for PGO, it's possible to combine multiple 
 go tool pprof -proto a.prof b.prof c.prof > combined.prof
 ```
 
-## Links
+## Resources
 
-- https://go.dev/blog/pgo
-- https://go.dev/doc/pgo
-- https://theyahya.com/posts/go-pgo/
+- [Profile-guided optimization in Go 1.21](https://go.dev/blog/pgo/)
+- [Profile-guided optimization](https://go.dev/doc/pgo/)
+- [A Deep Look Into Golang Profile-Guided Optimization](https://theyahya.com/posts/go-pgo/)

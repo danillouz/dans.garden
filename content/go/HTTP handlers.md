@@ -2,7 +2,7 @@
 title: HTTP handlers
 description: Learning about the HTTP request multiplexer, handlers and middleware in Go.
 date: 2022-12-22
-updated: 2023-01-29
+updated: 2024-08-17
 tags:
   - evergreen
 ---
@@ -11,9 +11,7 @@ I recently had to hook-up some middleware in a Go service. And while looking int
 
 For example, the `http.Handler` and `http.HandlerFunc` types. The `http.Handle()` and `http.HandleFunc()` functions. And the `http.ServeMux` type that _also_ defines `Handle()` and `HandleFunc()` methods.
 
-At first I didn't really get the difference. And I didn't understand why middleware in Go is typically a function that accepts and returns an `http.Handler`. But after some (re)reading and experimentation, it all made sense!
-
-This is what I learned.
+At first I didn't really get the difference. And I didn't understand why middleware in Go is typically a function that accepts and returns an `http.Handler`. But after some (re)reading and experimentation, it all made sense. This is what I learned.
 
 ## Handler & ServeMux
 
@@ -290,7 +288,3 @@ It will strip the port number and redirect any request containing `.` or `..` el
 - Method-based routing.
 
 For such features, you either need to implement that yourself (e.g. check the request method in a handler). Or use a third-party library like [chi](https://github.com/go-chi/chi) or [gin](https://github.com/gin-gonic/gin).
-
-## In closing
-
-I mostly wrote this as a reference for my future self. But perhaps it can be useful to others as well!

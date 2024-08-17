@@ -309,14 +309,6 @@ footer {
       padding: 0 2rem;
     }
   }
-
-  & article {
-    padding: 0 1rem;
-
-    @media (min-width: $fullPageWidth) {
-      padding: 0 2rem;
-    }
-  }
 }
 
 .meta {

@@ -13,8 +13,7 @@ export default ((opts?: Options) => {
         <p>
           &copy; {year} Daniël Illouz
           <br />
-          {i18n(cfg.locale).components.attribution.createdWith}{" "}
-          <a href="https://quartz.jzhao.xyz/">Quartz v{version}</a>
+          {i18n(cfg.locale).components.attribution.createdWith} Quartz v{version}
         </p>
       </aside>
     )

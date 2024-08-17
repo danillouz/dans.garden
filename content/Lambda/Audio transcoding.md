@@ -2,14 +2,16 @@
 title: Audio transcoding
 description: Transcoding short audio files with AWS Lambda, Amazon Elastic Transcoder or FFmpeg.
 date: 2019-10-27
-updated: 2023-02-03
+updated: 2024-08-17
 tags:
   - evergreen
 ---
 
-For a side project I'm converting WebM audio files to MP3. I initially started doing this with [Amazon Elastic Transcoder](https://aws.amazon.com/elastictranscoder). But after doing the same with [FFmpeg](https://www.ffmpeg.org) and [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html), my initial testing showed that the latter is around **10 times cheaper** and **2 times faster** for **short audio** recordings (~3 minute / ~3 MB files).
+For a side project I'm converting WebM audio files to MP3. I initially started doing this with [Amazon Elastic Transcoder](https://aws.amazon.com/elastictranscoder). But after doing the same with [FFmpeg](https://www.ffmpeg.org) and [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html), my initial testing showed that the latter is around **10 times cheaper and 2 times faster for short audio** recordings (~3 minute / ~3 MB files).
 
-If you just want to read the code, have a look at [github.com/upstandfm/audio-transcoder](https://github.com/upstandfm/audio-transcoder).
+> [!note] Just want to read the code?
+>
+> See [github.com/upstandfm/audio-transcoder](https://github.com/upstandfm/audio-transcoder).
 
 ## Use case
 
@@ -1011,9 +1013,3 @@ Costs of transcoding `100 000` 3 minute (2,8 MB) WebM audio files to MP3 per mon
 | :------------------------ | :--------------------- | :------------------ |
 | Amazon Elastic Transcoder | ~ $64                  | ~ $64               |
 | FFmpeg and Lambda Layers  | ~ $13                  | ~ $6                |
-
-## In closing
-
-That's a wrap! The post turned out a bit longer than expected, but hopefully it will prove useful in your transcoding adventures.
-
-Happy transcoding!
