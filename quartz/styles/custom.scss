@@ -59,24 +59,25 @@
       & #toc > h3,
       & .backlinks > h3,
       & .graph h3 {
-        text-transform: uppercase;
+        font-family: var(--headerFont);
         font-size: 0.9rem;
+        text-transform: uppercase;
       }
     }
   }
 }
 
-article {
-  & h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  thead {
-    font-family: var(--bodyFont);
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+thead {
+  font-family: var(--bodyFont);
+}
 
+article {
   & .callout {
     font-family: var(--headerFont);
   }
