@@ -45,7 +45,14 @@ export const defaultContentPageLayout: PageLayout = {
   right: [
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
-    Component.Graph(),
+    Component.Graph({
+      globalGraph: {
+        showTags: false,
+      },
+      localGraph: {
+        showTags: false,
+      },
+    }),
   ],
 }
 
@@ -80,5 +87,15 @@ export const defaultListPageLayout: PageLayout = {
     ),
     Component.DesktopOnly(Component.Attribution()),
   ],
-  right: [Component.Backlinks(), Component.Graph()],
+  right: [
+    Component.Backlinks(),
+    Component.Graph({
+      globalGraph: {
+        showTags: false,
+      },
+      localGraph: {
+        showTags: false,
+      },
+    }),
+  ],
 }
