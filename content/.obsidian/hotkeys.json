@@ -4,5 +4,11 @@
       "modifiers": ["Mod", "Shift"],
       "key": "Z"
     }
+  ],
+  "insert-template": [
+    {
+      "modifiers": ["Alt", "Shift"],
+      "key": "N"
+    }
   ]
 }
