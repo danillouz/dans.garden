@@ -2,7 +2,7 @@
 title: Dan's garden
 description: Welcome to my digital garden.
 date: 2024-08-01
-updated: 2024-08-17
+updated: 2024-08-18
 ---
 
 <div class="images two">
@@ -27,7 +27,8 @@ A digital garden is a way to publish personal knowledge on the web. It sits some
 
 The main goal of a digital garden is to collect, grow and evolve ideas over time. It's about making connections, learning in public and having a personal space that reflects your way of thinking. But what makes it unique, is that **a digital garden has unfinished and imperfect work**.
 
-You can read more about digital gardens [here](https://maggieappleton.com/garden-history).
+> [!note] Want to learn more about digital gardens?
+> See [maggieappleton.com/garden-history](https://maggieappleton.com/garden-history).
 
 ## Why I garden
 
@@ -61,4 +62,4 @@ But because a garden is never finished, each page contains **planted** and **las
 > - Built with [Quartz](https://quartz.jzhao.xyz/).
 > - Color theme is [Rosé Pine](https://rosepinetheme.com/palette/).
 > - Illustrations (public domain) from [Public Work](https://public.work/).
-> - All code can be found on my [GitHub](https://github.com/danillouz/dans.garden).
+> - All code can be found at [github.com/danillouz/dans.garden](https://github.com/danillouz/dans.garden).
