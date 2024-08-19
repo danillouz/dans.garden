@@ -2,8 +2,9 @@
 title: Nagle's algorithm
 description: Nagle's algorithm solves the small-packet problem, but can cause problems.
 date: 2024-08-18
+updated: 2024-08-19
 aliases:
-  - nagling
+  - Nagling
   - TCP NODELAY
   - AKC delay
 tags:
@@ -14,7 +15,7 @@ Sending small packets has a large overhead that can cause network congestion.
 
 For example, sending 1 byte of data over the network results in a 41 bytes packet (20 bytes for TCP and 20 bytes for IPv4 headers).
 
-This is called the "small-packet problem" and happens in telnet sessions, where every single character is sent over the network as it's typed.
+This is called the "small-packet problem" and for example happens in telnet sessions, where every single character is sent over the network as it's typed.
 
 Especially over a slow network, sending many small packets like that can lead to network congestion.
 
