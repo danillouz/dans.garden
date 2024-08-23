@@ -2,7 +2,7 @@
 title: DNS
 description: What I learned about the Domain Name System so far.
 date: 2023-06-03
-updated: 2024-08-17
+updated: 2024-08-23
 aliases:
   - The Domain Name System
 tags:
@@ -32,7 +32,7 @@ It's a bit like that on the internet, but the protocol that's used is called the
 
 [^1]: The IP protocol is basically the addressing system of the internet, but there's more needed to deliver packets from source to destination. The exact details are out of scope for this page, but there's also a transport protocol needed to define rules _how_ data is sent and received. Ultimately there are multiple protocols needed which are "layered" on top of each other, like [TCP/IP](https://en.wikipedia.org/wiki/Internet_protocol_suite).
 
-IP addresses are unique identifiers. For example, if a device wants to visit this website it must (at the time of this writing) go to the IP address `76.76.21.21`[^2].
+IP addresses are unique identifiers. For example, if a device wants to visit this website it must (at the time of this writing) go to the IP address `172.67.195.86`[^2].
 
 [^2]: This is an IPv4 address, and IP version 4 has been around since 1983. It works great, but we're running out of unique IPv4 addresses because nowadays even toasters must connect to the internet. This is where IPv6 comes in: IPv6 uses more characters to make sure all toasters all covered! For example, `2606:4700::6810:84e5` is an IPv6 address. But IPv6 is not completely adopted yet, so it's still common to use IPv4.
 
