@@ -6,7 +6,7 @@ updated: 2024-08-19
 aliases:
   - Profile Guided Optimizations
 tags:
-  - sapling
+  - seedling
 ---
 
 When Go builds a binary, the compiler will optimize it by default (e.g. by inlining code). But here the compiler will make a "best effort guess" by using static heuristics based on (un)common paths in functions.
