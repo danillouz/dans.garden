@@ -2,7 +2,7 @@
 title: Nagle's algorithm
 description: Nagle's algorithm solves the small-packet problem, but can cause problems.
 date: 2024-08-18
-updated: 2024-08-19
+updated: 2024-08-23
 aliases:
   - Nagling
   - TCP NODELAY
@@ -28,9 +28,10 @@ The algorithm can be described as:
 1. As long as the sender has a packet it received no ACK for.
 2. Keep buffering until it has a "full packet".
 
-This is sometimes called "nagling" and is controlled via `TCP_NODELAY`, which is usually _enabled_ by default.
+This is sometimes called "nagling" and is usually _enabled_ by default.
 
 > [!note]
+> Nagle's algorithm is controlled via `TCP_NODELAY`.
 > Enabling `TCP_NODELAY` _disables_ Nagle's algorithm.
 
 ## ACK delays
