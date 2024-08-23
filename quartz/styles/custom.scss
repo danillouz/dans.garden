@@ -474,31 +474,6 @@ hr {
   }
 }
 
-//#region Homepage.
-
-.images {
-  display: grid;
-  grid-auto-rows: auto;
-  gap: 0.5rem;
-  align-items: center;
-
-  &.two {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  &.three {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  &.four {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  & img {
-    margin: 0;
-  }
-}
-
 //#region Folder/Tag pages.
 
 .page-listing-section {
