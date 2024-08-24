@@ -22,30 +22,30 @@ I did learn that you can use `httputil.ReverseProxy` and `Director` to do someth
 
 ```go
 func NewProxy() *httputil.ReverseProxy {
-  return &httputil.ReverseProxy{
-    Transport: &http.Transport{
-      IdleConnTimeout:     2 * time.Minute,
-      MaxIdleConnsPerHost: 32,
-      MaxIdleConns:        100,
-    },
-    Director: func(req *http.Request) {
-      var rawTarget string
-      if t, ok := FromTargetContext(req.Context()); ok {
-        rawTarget = t
-      }
-      if rawTarget != "" {
-        if target, err := url.Parse(rawTarget); err != nil {
-          // Do nothing?
-        } else {
-          req.Host = target.Host
-          req.URL.Scheme = target.Scheme
-          req.URL.Host = target.Host
-          req.URL.Path = target.Path
-          req.URL.RawPath = target.EscapedPath()
-        }
-      }
-    },
-  }
+	return &httputil.ReverseProxy{
+		Transport: &http.Transport{
+			IdleConnTimeout:     2 * time.Minute,
+			MaxIdleConnsPerHost: 32,
+			MaxIdleConns:        100,
+		},
+		Director: func(req *http.Request) {
+			var rawTarget string
+			if t, ok := FromTargetContext(req.Context()); ok {
+				rawTarget = t
+			}
+			if rawTarget != "" {
+				if target, err := url.Parse(rawTarget); err != nil {
+					// Do nothing?
+				} else {
+					req.Host = target.Host
+					req.URL.Scheme = target.Scheme
+					req.URL.Host = target.Host
+					req.URL.Path = target.Path
+					req.URL.RawPath = target.EscapedPath()
+				}
+			}
+		},
+	}
 }
 ```
 

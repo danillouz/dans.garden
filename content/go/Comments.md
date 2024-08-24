@@ -74,9 +74,9 @@ Code blocks are indented lines that are not a [[#Lists|list]]:
 ```go
 // This is a code block:
 //
-//  func Hello() string {
-//      return "Hello"
-//  }
+//	func Hello() string {
+//		return "Hello"
+//	}
 ```
 
 ## Lists
@@ -96,8 +96,8 @@ For example:
 
 ```go
 // This is a numbered list:
-//  1. One
-//  2. Two
+//	1. One
+//	2. Two
 ```
 
 ### Bullet lists
@@ -112,8 +112,8 @@ For example:
 
 ```go
 // This is a bullet list:
-//  - One
-//  - Two
+//	- One
+//	- Two
 ```
 
 ## Resources

@@ -23,7 +23,7 @@ The `net/http` package exposes the [http.Handler](https://pkg.go.dev/net/http#Ha
 
 ```go
 type Handler interface {
-  ServeHTTP(ResponseWriter, *Request)
+	ServeHTTP(ResponseWriter, *Request)
 }
 ```
 
@@ -43,22 +43,23 @@ So if we implement an `http.Handler` and use it together with an `http.ServeMux`
 package main
 
 import (
-  "log"
-  "net/http"
+	"log"
+	"net/http"
 )
 
-type HomeHandler struct {}
+type HomeHandler struct{}
+
 func (h HomeHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-  w.Write([]byte("Home"))
+	w.Write([]byte("Home"))
 }
 
 func main() {
-  mux := http.NewServeMux()
-  handler := HomeHandler{}
-  mux.Handle("/", handler)
-  if err := http.ListenAndServe(":8888", mux); err != nil {
-    log.Fatal(err)
-  }
+	mux := http.NewServeMux()
+	handler := HomeHandler{}
+	mux.Handle("/", handler)
+	if err := http.ListenAndServe(":8888", mux); err != nil {
+		log.Fatal(err)
+	}
 }
 ```
 
@@ -77,19 +78,20 @@ So we can achieve the exact same thing as in the example above with the followin
 package main
 
 import (
-  "log"
-  "net/http"
+	"log"
+	"net/http"
 )
 
 func main() {
-  mux := http.NewServeMux()
-  mux.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
-    w.Write([]byte("Home"))
-  })
-  if err := http.ListenAndServe(":8888", mux); err != nil {
-    log.Fatal(err)
-  }
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Home"))
+	})
+	if err := http.ListenAndServe(":8888", mux); err != nil {
+		log.Fatal(err)
+	}
 }
+
 ```
 
 ### DefaultServeMux
@@ -102,17 +104,17 @@ For example:
 package main
 
 import (
-  "log"
-  "net/http"
+	"log"
+	"net/http"
 )
 
 func main() {
-  http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
-    w.Write([]byte("Home"))
-  })
-  if err := http.ListenAndServe(":8888", nil); err != nil {
-    log.Fatal(err)
-  }
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Home"))
+	})
+	if err := http.ListenAndServe(":8888", nil); err != nil {
+		log.Fatal(err)
+	}
 }
 ```
 
@@ -129,17 +131,18 @@ This type allows us to convert a "plain" handler function (i.e. `func(ResponseWr
 So the following won't compile:
 
 ```go
-handler := func (w http.ResponseWriter, r *http.Request) {
-  w.Write([]byte("Home"))
+handler := func(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Home"))
 }
 http.Handle("/", handler) // ❌ Does not compile
+
 ```
 
 But this will compile:
 
 ```go
-handler := func (w http.ResponseWriter, r *http.Request) {
-  w.Write([]byte("Home"))
+handler := func(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Home"))
 }
 http.Handle("/", http.HandlerFunc(handler)) // ✅ Compiles
 ```
@@ -170,12 +173,13 @@ For example:
 
 ```go
 func someMiddleware(next http.Handler) http.Handler {
-  return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
-    // Do something with `r`.
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Do something with `r`.
 
-    next.ServeHTTP(w, r)
-  })
+		next.ServeHTTP(w, r)
+	})
 }
+
 ```
 
 Why does middleware accept and return an `http.Handler`? This allows us to create a "chain" of handlers:

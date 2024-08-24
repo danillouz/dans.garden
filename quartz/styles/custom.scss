@@ -245,6 +245,8 @@ a {
 
 .graph {
   & > .graph-outer {
+    background-color: var(--light);
+
     & > #global-graph-icon {
       color: var(--darkgray);
       opacity: 1;
@@ -435,6 +437,7 @@ pre {
   & > code {
     font-size: 0.9rem;
     padding: 1rem 0;
+    tab-size: 4;
 
     &[data-line-numbers] {
       & > [data-line] {
